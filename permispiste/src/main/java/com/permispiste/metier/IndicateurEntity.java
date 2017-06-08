@@ -11,6 +11,7 @@ public class IndicateurEntity {
     private int numindic;
     private Integer poids;
     private ActionEntity actionByNumaction;
+    private int numaction;
 
     @Id
     @Column(name = "NUMINDIC", nullable = false)
@@ -60,5 +61,15 @@ public class IndicateurEntity {
 
     public void setActionByNumaction(ActionEntity actionByNumaction) {
         this.actionByNumaction = actionByNumaction;
+    }
+
+    @Basic
+    @Column(name = "NUMACTION")
+    public int getNumaction() {
+        return numaction;
+    }
+
+    public void setNumaction(int numaction) {
+        this.numaction = numaction;
     }
 }

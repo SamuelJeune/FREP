@@ -13,6 +13,7 @@ public class MissionEntity {
     private String libmission;
     private Collection<FixeEntity> fixesByNummission;
     private JeuEntity jeuByNumjeu;
+    private int numjeu;
 
     @Id
     @Column(name = "NUMMISSION", nullable = false)
@@ -71,5 +72,15 @@ public class MissionEntity {
 
     public void setJeuByNumjeu(JeuEntity jeuByNumjeu) {
         this.jeuByNumjeu = jeuByNumjeu;
+    }
+
+    @Basic
+    @Column(name = "NUMJEU")
+    public int getNumjeu() {
+        return numjeu;
+    }
+
+    public void setNumjeu(int numjeu) {
+        this.numjeu = numjeu;
     }
 }

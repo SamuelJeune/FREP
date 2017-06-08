@@ -18,6 +18,7 @@ public class ActionEntity {
     private Collection<EstAssocieEntity> estAssociesByNumaction;
     private Collection<IndicateurEntity> indicateursByNumaction;
     private Collection<ObtientEntity> obtientsByNumaction;
+    private Integer actNumaction;
 
     @Id
     @Column(name = "NUMACTION", nullable = false)
@@ -124,5 +125,15 @@ public class ActionEntity {
 
     public void setObtientsByNumaction(Collection<ObtientEntity> obtientsByNumaction) {
         this.obtientsByNumaction = obtientsByNumaction;
+    }
+
+    @Basic
+    @Column(name = "ACT_NUMACTION")
+    public Integer getActNumaction() {
+        return actNumaction;
+    }
+
+    public void setActNumaction(Integer actNumaction) {
+        this.actNumaction = actNumaction;
     }
 }

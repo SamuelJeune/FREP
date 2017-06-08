@@ -1,16 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Robin
-  Date: 02/06/2017
-  Time: 17:16
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-</body>
-</html>
+
+<tags:layout>
+    <jsp:attribute name="title">
+      Expo : Médiathèque de Polytech
+    </jsp:attribute>
+    <jsp:body>
+        <div class="container">
+
+            <h2 class="text-center">Médiathèque de POLYTECH</h2>
+            <br>
+
+        </div>
+    </jsp:body>
+</tags:layout>

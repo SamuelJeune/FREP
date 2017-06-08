@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.permispiste.metier.ActionEntity">
+        <table name="action" schema="permispiste" catalog=""/>
+        <attributes>
+            <id name="numaction">
+                <column name="NUMACTION"/>
+            </id>
+            <basic name="actNumaction">
+                <column name="ACT_NUMACTION"/>
+            </basic>
+            <basic name="libaction">
+                <column name="LIBACTION"/>
+            </basic>
+            <basic name="scoremin">
+                <column name="SCOREMIN"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.AppartientEntity">
+        <table name="appartient" schema="permispiste" catalog=""/>
+        <id-class class="com.permispiste.metier.AppartientEntityPK"/>
+        <attributes>
+            <id name="numjeu">
+                <column name="NUMJEU"/>
+            </id>
+            <id name="numaction">
+                <column name="NUMACTION"/>
+            </id>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.ApprenantEntity">
+        <table name="apprenant" schema="permispiste" catalog=""/>
+        <attributes>
+            <id name="numapprenant">
+                <column name="NUMAPPRENANT"/>
+            </id>
+            <basic name="nomapprenant">
+                <column name="NOMAPPRENANT"/>
+            </basic>
+            <basic name="prenomapprenant">
+                <column name="PRENOMAPPRENANT"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.EstAssocieEntity">
+        <table name="est_associe" schema="permispiste" catalog=""/>
+        <id-class class="com.permispiste.metier.EstAssocieEntityPK"/>
+        <attributes>
+            <id name="numaction">
+                <column name="NUMACTION"/>
+            </id>
+            <id name="numobjectif">
+                <column name="NUMOBJECTIF"/>
+            </id>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.FixeEntity">
+        <table name="fixe" schema="permispiste" catalog=""/>
+        <id-class class="com.permispiste.metier.FixeEntityPK"/>
+        <attributes>
+            <id name="nummission">
+                <column name="NUMMISSION"/>
+            </id>
+            <id name="numobjectif">
+                <column name="NUMOBJECTIF"/>
+            </id>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.IndicateurEntity">
+        <table name="indicateur" schema="permispiste" catalog=""/>
+        <attributes>
+            <id name="numindic">
+                <column name="NUMINDIC"/>
+            </id>
+            <basic name="numaction">
+                <column name="NUMACTION"/>
+            </basic>
+            <basic name="poids">
+                <column name="POIDS"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.InscriptionEntity">
+        <table name="inscription" schema="permispiste" catalog=""/>
+        <id-class class="com.permispiste.metier.InscriptionEntityPK"/>
+        <attributes>
+            <id name="numapprenant">
+                <column name="NUMAPPRENANT"/>
+            </id>
+            <id name="numjeu">
+                <column name="NUMJEU"/>
+            </id>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.JeuEntity">
+        <table name="jeu" schema="permispiste" catalog=""/>
+        <attributes>
+            <id name="numjeu">
+                <column name="NUMJEU"/>
+            </id>
+            <basic name="libellejeu">
+                <column name="LIBELLEJEU"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.MissionEntity">
+        <table name="mission" schema="permispiste" catalog=""/>
+        <attributes>
+            <id name="nummission">
+                <column name="NUMMISSION"/>
+            </id>
+            <basic name="numjeu">
+                <column name="NUMJEU"/>
+            </basic>
+            <basic name="libmission">
+                <column name="LIBMISSION"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.ObjectifEntity">
+        <table name="objectif" schema="permispiste" catalog=""/>
+        <attributes>
+            <id name="numobjectif">
+                <column name="NUMOBJECTIF"/>
+            </id>
+            <basic name="libobectif">
+                <column name="LIBOBECTIF"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="com.permispiste.metier.ObtientEntity">
+        <table name="obtient" schema="permispiste" catalog=""/>
+        <id-class class="com.permispiste.metier.ObtientEntityPK"/>
+        <attributes>
+            <id name="numapprenant">
+                <column name="NUMAPPRENANT"/>
+            </id>
+            <id name="numaction">
+                <column name="NUMACTION"/>
+            </id>
+            <basic name="valeur">
+                <column name="VALEUR"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
