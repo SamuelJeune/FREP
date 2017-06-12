@@ -5,12 +5,12 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      Expo : Médiathèque de Polytech
+      F.R.E.P.
     </jsp:attribute>
     <jsp:body>
         <div class="container">
 
-            <h2 class="text-center">Médiathèque de POLYTECH</h2>
+            <h2 class="text-center">F.R.E.P.</h2>
             <br>
 
         </div>
