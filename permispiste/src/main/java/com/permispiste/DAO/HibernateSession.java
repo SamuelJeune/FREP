@@ -25,9 +25,9 @@ public class HibernateSession {
 
     public static void closeSession() {
         Session s = session.get();
-        session.set(null);
         if(s != null) {
             s.close();
         }
+        session.set(null);
     }
 }

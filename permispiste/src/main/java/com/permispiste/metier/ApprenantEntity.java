@@ -13,6 +13,7 @@ public class ApprenantEntity {
     private String prenomapprenant;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NUMAPPRENANT")
     public int getNumapprenant() {
         return numapprenant;

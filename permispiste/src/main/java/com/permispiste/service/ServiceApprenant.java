@@ -1,21 +1,27 @@
 package com.permispiste.service;
 
-import com.permispiste.DAO.HibernateSession;
 import com.permispiste.metier.ApprenantEntity;
-import org.hibernate.Session;
 
-import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class ServiceApprenant {
+public class ServiceApprenant extends Services {
 
     public List<ApprenantEntity> getAll() {
         List<ApprenantEntity> apprenants;
         String request = "SELECT apprenant FROM ApprenantEntity apprenant";
-        Session session = HibernateSession.currentSession();
-        TypedQuery<ApprenantEntity> query = session.createQuery(request, ApprenantEntity.class);
-        apprenants = query.getResultList();
-        HibernateSession.closeSession();
+        apprenants = this.execute(request, ApprenantEntity.class);
         return apprenants;
+    }
+
+    public ApprenantEntity getById(int id) {
+        ApprenantEntity apprenant;
+        String request = "SELECT apprenant FROM ApprenantEntity apprenant WHERE apprenant.id = " + id;
+        apprenant = this.execute(request, ApprenantEntity.class).get(0);
+        return apprenant;
+    }
+
+    public int saveOrUpdate(ApprenantEntity apprenant) {
+        super.saveOrUpdate(apprenant);
+        return apprenant.getNumapprenant();
     }
 }
