@@ -1,16 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Robin
-  Date: 08/06/2017
-  Time: 10:41
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
-</body>
-</html>
+<tags:layout>
+    <jsp:attribute name="title">
+      F.R.E.P. - Liste des apprenants
+    </jsp:attribute>
+    <jsp:body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Num. apprenant</th>
+                    <th>Nom apprenant</th>
+                    <th>Prénom apprenant</th>
+                </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${apprenants}" var="apprenant">
+                <tr>
+                    <td>${apprenant.numapprenant}</td>
+                    <td>${apprenant.nomapprenant}</td>
+                    <td>${apprenant.prenomapprenant}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </jsp:body>
+</tags:layout>

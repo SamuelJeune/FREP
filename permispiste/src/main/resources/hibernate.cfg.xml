@@ -4,25 +4,22 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost:3306/permispiste</property>
-    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/permispiste</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.username">userepul</property>
+    <property name="hibernate.connection.password">epul</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
-      <mapping resource="mapping.xml"/>
-      <mapping class="com.permispiste.metier.ActionEntity"/>
-      <mapping class="com.permispiste.metier.AppartientEntity"/>
-      <mapping class="com.permispiste.metier.ApprenantEntity"/>
-      <mapping class="com.permispiste.metier.EstAssocieEntity"/>
-      <mapping class="com.permispiste.metier.FixeEntity"/>
-      <mapping class="com.permispiste.metier.IndicateurEntity"/>
-      <mapping class="com.permispiste.metier.InscriptionEntity"/>
-      <mapping class="com.permispiste.metier.JeuEntity"/>
-      <mapping class="com.permispiste.metier.MissionEntity"/>
-      <mapping class="com.permispiste.metier.ObjectifEntity"/>
-      <mapping class="com.permispiste.metier.ObtientEntity"/>
-      <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
-
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
+    <mapping class="com.permispiste.metier.ActionEntity"/>
+    <mapping class="com.permispiste.metier.AppartientEntity"/>
+    <mapping class="com.permispiste.metier.ApprenantEntity"/>
+    <mapping class="com.permispiste.metier.EstAssocieEntity"/>
+    <mapping class="com.permispiste.metier.FixeEntity"/>
+    <mapping class="com.permispiste.metier.IndicateurEntity"/>
+    <mapping class="com.permispiste.metier.InscriptionEntity"/>
+    <mapping class="com.permispiste.metier.JeuEntity"/>
+    <mapping class="com.permispiste.metier.MissionEntity"/>
+    <mapping class="com.permispiste.metier.ObjectifEntity"/>
+    <mapping class="com.permispiste.metier.ObtientEntity"/>
   </session-factory>
 </hibernate-configuration>
