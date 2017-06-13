@@ -3,12 +3,14 @@ package com.permispiste.metier;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
- * Created by Robin on 02/06/2017.
+ * Created by Robin on 12/06/2017.
  */
 public class ObtientEntityPK implements Serializable {
     private int numapprenant;
+    private Date datejour;
     private int numaction;
 
     @Column(name = "NUMAPPRENANT", nullable = false)
@@ -19,6 +21,16 @@ public class ObtientEntityPK implements Serializable {
 
     public void setNumapprenant(int numapprenant) {
         this.numapprenant = numapprenant;
+    }
+
+    @Column(name = "DATEJOUR", nullable = false)
+    @Id
+    public Date getDatejour() {
+        return datejour;
+    }
+
+    public void setDatejour(Date datejour) {
+        this.datejour = datejour;
     }
 
     @Column(name = "NUMACTION", nullable = false)
@@ -40,6 +52,7 @@ public class ObtientEntityPK implements Serializable {
 
         if (numapprenant != that.numapprenant) return false;
         if (numaction != that.numaction) return false;
+        if (datejour != null ? !datejour.equals(that.datejour) : that.datejour != null) return false;
 
         return true;
     }
@@ -47,6 +60,7 @@ public class ObtientEntityPK implements Serializable {
     @Override
     public int hashCode() {
         int result = numapprenant;
+        result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
         result = 31 * result + numaction;
         return result;
     }

@@ -4,12 +4,13 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by Robin on 02/06/2017.
+ * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "action", schema = "permispiste", catalog = "")
+@Table(name = "action", schema = "permispiste2", catalog = "")
 public class ActionEntity {
     private int numaction;
+    private Integer actNumaction;
     private String libaction;
     private Integer scoremin;
     private ActionEntity actionByActNumaction;
@@ -18,7 +19,7 @@ public class ActionEntity {
     private Collection<EstAssocieEntity> estAssociesByNumaction;
     private Collection<IndicateurEntity> indicateursByNumaction;
     private Collection<ObtientEntity> obtientsByNumaction;
-    private Integer actNumaction;
+    private Collection<PossedeEntity> possedesByNumaction;
 
     @Id
     @Column(name = "NUMACTION", nullable = false)
@@ -28,6 +29,16 @@ public class ActionEntity {
 
     public void setNumaction(int numaction) {
         this.numaction = numaction;
+    }
+
+    @Basic
+    @Column(name = "ACT_NUMACTION", nullable = true)
+    public Integer getActNumaction() {
+        return actNumaction;
+    }
+
+    public void setActNumaction(Integer actNumaction) {
+        this.actNumaction = actNumaction;
     }
 
     @Basic
@@ -58,6 +69,7 @@ public class ActionEntity {
         ActionEntity that = (ActionEntity) o;
 
         if (numaction != that.numaction) return false;
+        if (actNumaction != null ? !actNumaction.equals(that.actNumaction) : that.actNumaction != null) return false;
         if (libaction != null ? !libaction.equals(that.libaction) : that.libaction != null) return false;
         if (scoremin != null ? !scoremin.equals(that.scoremin) : that.scoremin != null) return false;
 
@@ -67,6 +79,7 @@ public class ActionEntity {
     @Override
     public int hashCode() {
         int result = numaction;
+        result = 31 * result + (actNumaction != null ? actNumaction.hashCode() : 0);
         result = 31 * result + (libaction != null ? libaction.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);
         return result;
@@ -127,13 +140,12 @@ public class ActionEntity {
         this.obtientsByNumaction = obtientsByNumaction;
     }
 
-    @Basic
-    @Column(name = "ACT_NUMACTION")
-    public Integer getActNumaction() {
-        return actNumaction;
+    @OneToMany(mappedBy = "actionByNumaction")
+    public Collection<PossedeEntity> getPossedesByNumaction() {
+        return possedesByNumaction;
     }
 
-    public void setActNumaction(Integer actNumaction) {
-        this.actNumaction = actNumaction;
+    public void setPossedesByNumaction(Collection<PossedeEntity> possedesByNumaction) {
+        this.possedesByNumaction = possedesByNumaction;
     }
 }

@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by Robin on 02/06/2017.
+ * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "apprenant", schema = "permispiste", catalog = "")
+@Table(name = "apprenant", schema = "permispiste2", catalog = "")
 public class ApprenantEntity {
     private int numapprenant;
     private String nomapprenant;
     private String prenomapprenant;
-    private Collection<InscriptionEntity> inscriptionsByNumapprenant;
+    private Collection<InscritEntity> inscritsByNumapprenant;
     private Collection<ObtientEntity> obtientsByNumapprenant;
 
     @Id
@@ -69,12 +69,12 @@ public class ApprenantEntity {
     }
 
     @OneToMany(mappedBy = "apprenantByNumapprenant")
-    public Collection<InscriptionEntity> getInscriptionsByNumapprenant() {
-        return inscriptionsByNumapprenant;
+    public Collection<InscritEntity> getInscritsByNumapprenant() {
+        return inscritsByNumapprenant;
     }
 
-    public void setInscriptionsByNumapprenant(Collection<InscriptionEntity> inscriptionsByNumapprenant) {
-        this.inscriptionsByNumapprenant = inscriptionsByNumapprenant;
+    public void setInscritsByNumapprenant(Collection<InscritEntity> inscritsByNumapprenant) {
+        this.inscritsByNumapprenant = inscritsByNumapprenant;
     }
 
     @OneToMany(mappedBy = "apprenantByNumapprenant")

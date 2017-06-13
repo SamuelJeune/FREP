@@ -4,16 +4,16 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by Robin on 02/06/2017.
+ * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "mission", schema = "permispiste", catalog = "")
+@Table(name = "mission", schema = "permispiste2", catalog = "")
 public class MissionEntity {
     private int nummission;
+    private int numjeu;
     private String libmission;
     private Collection<FixeEntity> fixesByNummission;
     private JeuEntity jeuByNumjeu;
-    private int numjeu;
 
     @Id
     @Column(name = "NUMMISSION", nullable = false)
@@ -23,6 +23,16 @@ public class MissionEntity {
 
     public void setNummission(int nummission) {
         this.nummission = nummission;
+    }
+
+    @Basic
+    @Column(name = "NUMJEU", nullable = false)
+    public int getNumjeu() {
+        return numjeu;
+    }
+
+    public void setNumjeu(int numjeu) {
+        this.numjeu = numjeu;
     }
 
     @Basic
@@ -43,6 +53,7 @@ public class MissionEntity {
         MissionEntity that = (MissionEntity) o;
 
         if (nummission != that.nummission) return false;
+        if (numjeu != that.numjeu) return false;
         if (libmission != null ? !libmission.equals(that.libmission) : that.libmission != null) return false;
 
         return true;
@@ -51,6 +62,7 @@ public class MissionEntity {
     @Override
     public int hashCode() {
         int result = nummission;
+        result = 31 * result + numjeu;
         result = 31 * result + (libmission != null ? libmission.hashCode() : 0);
         return result;
     }
@@ -72,15 +84,5 @@ public class MissionEntity {
 
     public void setJeuByNumjeu(JeuEntity jeuByNumjeu) {
         this.jeuByNumjeu = jeuByNumjeu;
-    }
-
-    @Basic
-    @Column(name = "NUMJEU")
-    public int getNumjeu() {
-        return numjeu;
-    }
-
-    public void setNumjeu(int numjeu) {
-        this.numjeu = numjeu;
     }
 }

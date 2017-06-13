@@ -3,10 +3,10 @@ package com.permispiste.metier;
 import javax.persistence.*;
 
 /**
- * Created by Robin on 02/06/2017.
+ * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "appartient", schema = "permispiste", catalog = "")
+@Table(name = "appartient", schema = "permispiste2", catalog = "")
 @IdClass(AppartientEntityPK.class)
 public class AppartientEntity {
     private int numjeu;

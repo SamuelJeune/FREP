@@ -1,18 +1,22 @@
 package com.permispiste.metier;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 /**
- * Created by Robin on 02/06/2017.
+ * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "obtient", schema = "permispiste", catalog = "")
+@Table(name = "obtient", schema = "permispiste2", catalog = "")
 @IdClass(ObtientEntityPK.class)
 public class ObtientEntity {
     private int numapprenant;
+    private Date datejour;
     private int numaction;
-    private Integer valeur;
+    private Integer valeurdebut;
+    private Integer valeurfin;
     private ApprenantEntity apprenantByNumapprenant;
+    private CalendrierEntity calendrierByDatejour;
     private ActionEntity actionByNumaction;
 
     @Id
@@ -26,6 +30,16 @@ public class ObtientEntity {
     }
 
     @Id
+    @Column(name = "DATEJOUR", nullable = false)
+    public Date getDatejour() {
+        return datejour;
+    }
+
+    public void setDatejour(Date datejour) {
+        this.datejour = datejour;
+    }
+
+    @Id
     @Column(name = "NUMACTION", nullable = false)
     public int getNumaction() {
         return numaction;
@@ -36,13 +50,23 @@ public class ObtientEntity {
     }
 
     @Basic
-    @Column(name = "VALEUR", nullable = true)
-    public Integer getValeur() {
-        return valeur;
+    @Column(name = "VALEURDEBUT", nullable = true)
+    public Integer getValeurdebut() {
+        return valeurdebut;
     }
 
-    public void setValeur(Integer valeur) {
-        this.valeur = valeur;
+    public void setValeurdebut(Integer valeurdebut) {
+        this.valeurdebut = valeurdebut;
+    }
+
+    @Basic
+    @Column(name = "VALEURFIN", nullable = true)
+    public Integer getValeurfin() {
+        return valeurfin;
+    }
+
+    public void setValeurfin(Integer valeurfin) {
+        this.valeurfin = valeurfin;
     }
 
     @Override
@@ -54,7 +78,9 @@ public class ObtientEntity {
 
         if (numapprenant != that.numapprenant) return false;
         if (numaction != that.numaction) return false;
-        if (valeur != null ? !valeur.equals(that.valeur) : that.valeur != null) return false;
+        if (datejour != null ? !datejour.equals(that.datejour) : that.datejour != null) return false;
+        if (valeurdebut != null ? !valeurdebut.equals(that.valeurdebut) : that.valeurdebut != null) return false;
+        if (valeurfin != null ? !valeurfin.equals(that.valeurfin) : that.valeurfin != null) return false;
 
         return true;
     }
@@ -62,8 +88,10 @@ public class ObtientEntity {
     @Override
     public int hashCode() {
         int result = numapprenant;
+        result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
         result = 31 * result + numaction;
-        result = 31 * result + (valeur != null ? valeur.hashCode() : 0);
+        result = 31 * result + (valeurdebut != null ? valeurdebut.hashCode() : 0);
+        result = 31 * result + (valeurfin != null ? valeurfin.hashCode() : 0);
         return result;
     }
 
@@ -75,6 +103,16 @@ public class ObtientEntity {
 
     public void setApprenantByNumapprenant(ApprenantEntity apprenantByNumapprenant) {
         this.apprenantByNumapprenant = apprenantByNumapprenant;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DATEJOUR", referencedColumnName = "DATEJOUR", nullable = false)
+    public CalendrierEntity getCalendrierByDatejour() {
+        return calendrierByDatejour;
+    }
+
+    public void setCalendrierByDatejour(CalendrierEntity calendrierByDatejour) {
+        this.calendrierByDatejour = calendrierByDatejour;
     }
 
     @ManyToOne

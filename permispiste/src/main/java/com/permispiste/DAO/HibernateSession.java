@@ -6,16 +6,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateSession {
-    private static SessionFactory sessionFactory = null;
+    private static SessionFactory sessionFactory;
+    private static ThreadLocal<Session> session;
     static {
         try {
             sessionFactory = new Configuration().configure().buildSessionFactory();
-        } catch (HibernateException ex) {
-            System.out.println(ex.getMessage());
+            session = new ThreadLocal<>();
+        } catch(Exception e) {
+            System.out.println("CACACACACACACACACACACACACACACACACACACACACACACAC");
+            e.printStackTrace();
         }
     }
 
-    public static final ThreadLocal<Session> session = new ThreadLocal<>();
     public static Session currentSession() {
         Session s = session.get();
         if(s == null) {
