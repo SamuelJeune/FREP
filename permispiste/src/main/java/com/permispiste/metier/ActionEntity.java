@@ -1,28 +1,20 @@
 package com.permispiste.metier;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
- * Created by Robin on 12/06/2017.
+ * Created by Robin on 13/06/2017.
  */
 @Entity
-@Table(name = "action", schema = "permispiste2", catalog = "")
+@Table(name = "action", schema = "permispiste", catalog = "")
 public class ActionEntity {
     private int numaction;
     private Integer actNumaction;
     private String libaction;
     private Integer scoremin;
-    private ActionEntity actionByActNumaction;
-    private Collection<ActionEntity> actionsByNumaction;
-    private Collection<AppartientEntity> appartientsByNumaction;
-    private Collection<EstAssocieEntity> estAssociesByNumaction;
-    private Collection<IndicateurEntity> indicateursByNumaction;
-    private Collection<ObtientEntity> obtientsByNumaction;
-    private Collection<PossedeEntity> possedesByNumaction;
 
     @Id
-    @Column(name = "NUMACTION", nullable = false)
+    @Column(name = "NUMACTION")
     public int getNumaction() {
         return numaction;
     }
@@ -32,7 +24,7 @@ public class ActionEntity {
     }
 
     @Basic
-    @Column(name = "ACT_NUMACTION", nullable = true)
+    @Column(name = "ACT_NUMACTION")
     public Integer getActNumaction() {
         return actNumaction;
     }
@@ -42,7 +34,7 @@ public class ActionEntity {
     }
 
     @Basic
-    @Column(name = "LIBACTION", nullable = true, length = 25)
+    @Column(name = "LIBACTION")
     public String getLibaction() {
         return libaction;
     }
@@ -52,7 +44,7 @@ public class ActionEntity {
     }
 
     @Basic
-    @Column(name = "SCOREMIN", nullable = true)
+    @Column(name = "SCOREMIN")
     public Integer getScoremin() {
         return scoremin;
     }
@@ -83,69 +75,5 @@ public class ActionEntity {
         result = 31 * result + (libaction != null ? libaction.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "ACT_NUMACTION", referencedColumnName = "NUMACTION")
-    public ActionEntity getActionByActNumaction() {
-        return actionByActNumaction;
-    }
-
-    public void setActionByActNumaction(ActionEntity actionByActNumaction) {
-        this.actionByActNumaction = actionByActNumaction;
-    }
-
-    @OneToMany(mappedBy = "actionByActNumaction")
-    public Collection<ActionEntity> getActionsByNumaction() {
-        return actionsByNumaction;
-    }
-
-    public void setActionsByNumaction(Collection<ActionEntity> actionsByNumaction) {
-        this.actionsByNumaction = actionsByNumaction;
-    }
-
-    @OneToMany(mappedBy = "actionByNumaction")
-    public Collection<AppartientEntity> getAppartientsByNumaction() {
-        return appartientsByNumaction;
-    }
-
-    public void setAppartientsByNumaction(Collection<AppartientEntity> appartientsByNumaction) {
-        this.appartientsByNumaction = appartientsByNumaction;
-    }
-
-    @OneToMany(mappedBy = "actionByNumaction")
-    public Collection<EstAssocieEntity> getEstAssociesByNumaction() {
-        return estAssociesByNumaction;
-    }
-
-    public void setEstAssociesByNumaction(Collection<EstAssocieEntity> estAssociesByNumaction) {
-        this.estAssociesByNumaction = estAssociesByNumaction;
-    }
-
-    @OneToMany(mappedBy = "actionByNumaction")
-    public Collection<IndicateurEntity> getIndicateursByNumaction() {
-        return indicateursByNumaction;
-    }
-
-    public void setIndicateursByNumaction(Collection<IndicateurEntity> indicateursByNumaction) {
-        this.indicateursByNumaction = indicateursByNumaction;
-    }
-
-    @OneToMany(mappedBy = "actionByNumaction")
-    public Collection<ObtientEntity> getObtientsByNumaction() {
-        return obtientsByNumaction;
-    }
-
-    public void setObtientsByNumaction(Collection<ObtientEntity> obtientsByNumaction) {
-        this.obtientsByNumaction = obtientsByNumaction;
-    }
-
-    @OneToMany(mappedBy = "actionByNumaction")
-    public Collection<PossedeEntity> getPossedesByNumaction() {
-        return possedesByNumaction;
-    }
-
-    public void setPossedesByNumaction(Collection<PossedeEntity> possedesByNumaction) {
-        this.possedesByNumaction = possedesByNumaction;
     }
 }

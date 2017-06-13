@@ -1,22 +1,19 @@
 package com.permispiste.metier;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
- * Created by Robin on 12/06/2017.
+ * Created by Robin on 13/06/2017.
  */
 @Entity
-@Table(name = "mission", schema = "permispiste2", catalog = "")
+@Table(name = "mission", schema = "permispiste", catalog = "")
 public class MissionEntity {
     private int nummission;
     private int numjeu;
     private String libmission;
-    private Collection<FixeEntity> fixesByNummission;
-    private JeuEntity jeuByNumjeu;
 
     @Id
-    @Column(name = "NUMMISSION", nullable = false)
+    @Column(name = "NUMMISSION")
     public int getNummission() {
         return nummission;
     }
@@ -26,7 +23,7 @@ public class MissionEntity {
     }
 
     @Basic
-    @Column(name = "NUMJEU", nullable = false)
+    @Column(name = "NUMJEU")
     public int getNumjeu() {
         return numjeu;
     }
@@ -36,7 +33,7 @@ public class MissionEntity {
     }
 
     @Basic
-    @Column(name = "LIBMISSION", nullable = true, length = 25)
+    @Column(name = "LIBMISSION")
     public String getLibmission() {
         return libmission;
     }
@@ -65,24 +62,5 @@ public class MissionEntity {
         result = 31 * result + numjeu;
         result = 31 * result + (libmission != null ? libmission.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "missionByNummission")
-    public Collection<FixeEntity> getFixesByNummission() {
-        return fixesByNummission;
-    }
-
-    public void setFixesByNummission(Collection<FixeEntity> fixesByNummission) {
-        this.fixesByNummission = fixesByNummission;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMJEU", referencedColumnName = "NUMJEU", nullable = false)
-    public JeuEntity getJeuByNumjeu() {
-        return jeuByNumjeu;
-    }
-
-    public void setJeuByNumjeu(JeuEntity jeuByNumjeu) {
-        this.jeuByNumjeu = jeuByNumjeu;
     }
 }

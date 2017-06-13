@@ -1,22 +1,19 @@
 package com.permispiste.metier;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
- * Created by Robin on 12/06/2017.
+ * Created by Robin on 13/06/2017.
  */
 @Entity
-@Table(name = "apprenant", schema = "permispiste2", catalog = "")
+@Table(name = "apprenant", schema = "permispiste", catalog = "")
 public class ApprenantEntity {
     private int numapprenant;
     private String nomapprenant;
     private String prenomapprenant;
-    private Collection<InscritEntity> inscritsByNumapprenant;
-    private Collection<ObtientEntity> obtientsByNumapprenant;
 
     @Id
-    @Column(name = "NUMAPPRENANT", nullable = false)
+    @Column(name = "NUMAPPRENANT")
     public int getNumapprenant() {
         return numapprenant;
     }
@@ -26,7 +23,7 @@ public class ApprenantEntity {
     }
 
     @Basic
-    @Column(name = "NOMAPPRENANT", nullable = true, length = 25)
+    @Column(name = "NOMAPPRENANT")
     public String getNomapprenant() {
         return nomapprenant;
     }
@@ -36,7 +33,7 @@ public class ApprenantEntity {
     }
 
     @Basic
-    @Column(name = "PRENOMAPPRENANT", nullable = true, length = 25)
+    @Column(name = "PRENOMAPPRENANT")
     public String getPrenomapprenant() {
         return prenomapprenant;
     }
@@ -66,23 +63,5 @@ public class ApprenantEntity {
         result = 31 * result + (nomapprenant != null ? nomapprenant.hashCode() : 0);
         result = 31 * result + (prenomapprenant != null ? prenomapprenant.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "apprenantByNumapprenant")
-    public Collection<InscritEntity> getInscritsByNumapprenant() {
-        return inscritsByNumapprenant;
-    }
-
-    public void setInscritsByNumapprenant(Collection<InscritEntity> inscritsByNumapprenant) {
-        this.inscritsByNumapprenant = inscritsByNumapprenant;
-    }
-
-    @OneToMany(mappedBy = "apprenantByNumapprenant")
-    public Collection<ObtientEntity> getObtientsByNumapprenant() {
-        return obtientsByNumapprenant;
-    }
-
-    public void setObtientsByNumapprenant(Collection<ObtientEntity> obtientsByNumapprenant) {
-        this.obtientsByNumapprenant = obtientsByNumapprenant;
     }
 }

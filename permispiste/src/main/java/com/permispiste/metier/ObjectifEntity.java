@@ -1,21 +1,18 @@
 package com.permispiste.metier;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
- * Created by Robin on 12/06/2017.
+ * Created by Robin on 13/06/2017.
  */
 @Entity
-@Table(name = "objectif", schema = "permispiste2", catalog = "")
+@Table(name = "objectif", schema = "permispiste", catalog = "")
 public class ObjectifEntity {
     private int numobjectif;
     private String libobectif;
-    private Collection<EstAssocieEntity> estAssociesByNumobjectif;
-    private Collection<FixeEntity> fixesByNumobjectif;
 
     @Id
-    @Column(name = "NUMOBJECTIF", nullable = false)
+    @Column(name = "NUMOBJECTIF")
     public int getNumobjectif() {
         return numobjectif;
     }
@@ -25,7 +22,7 @@ public class ObjectifEntity {
     }
 
     @Basic
-    @Column(name = "LIBOBECTIF", nullable = true, length = 25)
+    @Column(name = "LIBOBECTIF")
     public String getLibobectif() {
         return libobectif;
     }
@@ -52,23 +49,5 @@ public class ObjectifEntity {
         int result = numobjectif;
         result = 31 * result + (libobectif != null ? libobectif.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "objectifByNumobjectif")
-    public Collection<EstAssocieEntity> getEstAssociesByNumobjectif() {
-        return estAssociesByNumobjectif;
-    }
-
-    public void setEstAssociesByNumobjectif(Collection<EstAssocieEntity> estAssociesByNumobjectif) {
-        this.estAssociesByNumobjectif = estAssociesByNumobjectif;
-    }
-
-    @OneToMany(mappedBy = "objectifByNumobjectif")
-    public Collection<FixeEntity> getFixesByNumobjectif() {
-        return fixesByNumobjectif;
-    }
-
-    public void setFixesByNumobjectif(Collection<FixeEntity> fixesByNumobjectif) {
-        this.fixesByNumobjectif = fixesByNumobjectif;
     }
 }

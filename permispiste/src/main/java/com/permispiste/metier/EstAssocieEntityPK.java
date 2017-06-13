@@ -5,13 +5,13 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by Robin on 12/06/2017.
+ * Created by Robin on 13/06/2017.
  */
 public class EstAssocieEntityPK implements Serializable {
     private int numaction;
     private int numobjectif;
 
-    @Column(name = "NUMACTION", nullable = false)
+    @Column(name = "NUMACTION")
     @Id
     public int getNumaction() {
         return numaction;
@@ -21,7 +21,7 @@ public class EstAssocieEntityPK implements Serializable {
         this.numaction = numaction;
     }
 
-    @Column(name = "NUMOBJECTIF", nullable = false)
+    @Column(name = "NUMOBJECTIF")
     @Id
     public int getNumobjectif() {
         return numobjectif;

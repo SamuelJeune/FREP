@@ -1,22 +1,18 @@
 package com.permispiste.metier;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
- * Created by Robin on 12/06/2017.
+ * Created by Robin on 13/06/2017.
  */
 @Entity
-@Table(name = "jeu", schema = "permispiste2", catalog = "")
+@Table(name = "jeu", schema = "permispiste", catalog = "")
 public class JeuEntity {
     private int numjeu;
     private String libellejeu;
-    private Collection<AppartientEntity> appartientsByNumjeu;
-    private Collection<InscritEntity> inscritsByNumjeu;
-    private Collection<MissionEntity> missionsByNumjeu;
 
     @Id
-    @Column(name = "NUMJEU", nullable = false)
+    @Column(name = "NUMJEU")
     public int getNumjeu() {
         return numjeu;
     }
@@ -26,7 +22,7 @@ public class JeuEntity {
     }
 
     @Basic
-    @Column(name = "LIBELLEJEU", nullable = true, length = 25)
+    @Column(name = "LIBELLEJEU")
     public String getLibellejeu() {
         return libellejeu;
     }
@@ -53,32 +49,5 @@ public class JeuEntity {
         int result = numjeu;
         result = 31 * result + (libellejeu != null ? libellejeu.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "jeuByNumjeu")
-    public Collection<AppartientEntity> getAppartientsByNumjeu() {
-        return appartientsByNumjeu;
-    }
-
-    public void setAppartientsByNumjeu(Collection<AppartientEntity> appartientsByNumjeu) {
-        this.appartientsByNumjeu = appartientsByNumjeu;
-    }
-
-    @OneToMany(mappedBy = "jeuByNumjeu")
-    public Collection<InscritEntity> getInscritsByNumjeu() {
-        return inscritsByNumjeu;
-    }
-
-    public void setInscritsByNumjeu(Collection<InscritEntity> inscritsByNumjeu) {
-        this.inscritsByNumjeu = inscritsByNumjeu;
-    }
-
-    @OneToMany(mappedBy = "jeuByNumjeu")
-    public Collection<MissionEntity> getMissionsByNumjeu() {
-        return missionsByNumjeu;
-    }
-
-    public void setMissionsByNumjeu(Collection<MissionEntity> missionsByNumjeu) {
-        this.missionsByNumjeu = missionsByNumjeu;
     }
 }

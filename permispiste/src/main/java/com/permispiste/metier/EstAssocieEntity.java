@@ -3,19 +3,17 @@ package com.permispiste.metier;
 import javax.persistence.*;
 
 /**
- * Created by Robin on 12/06/2017.
+ * Created by Robin on 13/06/2017.
  */
 @Entity
-@Table(name = "est_associe", schema = "permispiste2", catalog = "")
+@Table(name = "est_associe", schema = "permispiste", catalog = "")
 @IdClass(EstAssocieEntityPK.class)
 public class EstAssocieEntity {
     private int numaction;
     private int numobjectif;
-    private ActionEntity actionByNumaction;
-    private ObjectifEntity objectifByNumobjectif;
 
     @Id
-    @Column(name = "NUMACTION", nullable = false)
+    @Column(name = "NUMACTION")
     public int getNumaction() {
         return numaction;
     }
@@ -25,7 +23,7 @@ public class EstAssocieEntity {
     }
 
     @Id
-    @Column(name = "NUMOBJECTIF", nullable = false)
+    @Column(name = "NUMOBJECTIF")
     public int getNumobjectif() {
         return numobjectif;
     }
@@ -52,25 +50,5 @@ public class EstAssocieEntity {
         int result = numaction;
         result = 31 * result + numobjectif;
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMACTION", referencedColumnName = "NUMACTION", nullable = false)
-    public ActionEntity getActionByNumaction() {
-        return actionByNumaction;
-    }
-
-    public void setActionByNumaction(ActionEntity actionByNumaction) {
-        this.actionByNumaction = actionByNumaction;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMOBJECTIF", referencedColumnName = "NUMOBJECTIF", nullable = false)
-    public ObjectifEntity getObjectifByNumobjectif() {
-        return objectifByNumobjectif;
-    }
-
-    public void setObjectifByNumobjectif(ObjectifEntity objectifByNumobjectif) {
-        this.objectifByNumobjectif = objectifByNumobjectif;
     }
 }

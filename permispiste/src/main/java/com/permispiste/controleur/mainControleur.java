@@ -1,5 +1,6 @@
 package com.permispiste.controleur;
 
+import com.permispiste.metier.ApprenantEntity;
 import com.permispiste.service.ServiceApprenant;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

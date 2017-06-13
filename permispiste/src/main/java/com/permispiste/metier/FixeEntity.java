@@ -3,19 +3,17 @@ package com.permispiste.metier;
 import javax.persistence.*;
 
 /**
- * Created by Robin on 12/06/2017.
+ * Created by Robin on 13/06/2017.
  */
 @Entity
-@Table(name = "fixe", schema = "permispiste2", catalog = "")
+@Table(name = "fixe", schema = "permispiste", catalog = "")
 @IdClass(FixeEntityPK.class)
 public class FixeEntity {
     private int nummission;
     private int numobjectif;
-    private MissionEntity missionByNummission;
-    private ObjectifEntity objectifByNumobjectif;
 
     @Id
-    @Column(name = "NUMMISSION", nullable = false)
+    @Column(name = "NUMMISSION")
     public int getNummission() {
         return nummission;
     }
@@ -25,7 +23,7 @@ public class FixeEntity {
     }
 
     @Id
-    @Column(name = "NUMOBJECTIF", nullable = false)
+    @Column(name = "NUMOBJECTIF")
     public int getNumobjectif() {
         return numobjectif;
     }
@@ -52,25 +50,5 @@ public class FixeEntity {
         int result = nummission;
         result = 31 * result + numobjectif;
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMMISSION", referencedColumnName = "NUMMISSION", nullable = false)
-    public MissionEntity getMissionByNummission() {
-        return missionByNummission;
-    }
-
-    public void setMissionByNummission(MissionEntity missionByNummission) {
-        this.missionByNummission = missionByNummission;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMOBJECTIF", referencedColumnName = "NUMOBJECTIF", nullable = false)
-    public ObjectifEntity getObjectifByNumobjectif() {
-        return objectifByNumobjectif;
-    }
-
-    public void setObjectifByNumobjectif(ObjectifEntity objectifByNumobjectif) {
-        this.objectifByNumobjectif = objectifByNumobjectif;
     }
 }
