@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "est_associe", schema = "permispiste2", catalog = "")
+@Table(name = "est_associe", schema = "permispiste", catalog = "")
 @IdClass(EstAssocieEntityPK.class)
 public class EstAssocieEntity {
     private int numaction;

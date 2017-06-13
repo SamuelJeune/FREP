@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "appartient", schema = "permispiste2", catalog = "")
+@Table(name = "appartient", schema = "permispiste", catalog = "")
 @IdClass(AppartientEntityPK.class)
 public class AppartientEntity {
     private int numjeu;

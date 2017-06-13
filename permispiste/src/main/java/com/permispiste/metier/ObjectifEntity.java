@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "objectif", schema = "permispiste2", catalog = "")
+@Table(name = "objectif", schema = "permispiste", catalog = "")
 public class ObjectifEntity {
     private int numobjectif;
     private String libobectif;

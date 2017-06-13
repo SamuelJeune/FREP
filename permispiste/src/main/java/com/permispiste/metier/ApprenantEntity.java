@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "apprenant", schema = "permispiste2", catalog = "")
+@Table(name = "apprenant", schema = "permispiste", catalog = "")
 public class ApprenantEntity {
     private int numapprenant;
     private String nomapprenant;

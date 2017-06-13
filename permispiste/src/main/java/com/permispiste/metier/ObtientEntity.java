@@ -7,7 +7,7 @@ import java.sql.Date;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "obtient", schema = "permispiste2", catalog = "")
+@Table(name = "obtient", schema = "permispiste", catalog = "")
 @IdClass(ObtientEntityPK.class)
 public class ObtientEntity {
     private int numapprenant;
@@ -18,6 +18,7 @@ public class ObtientEntity {
     private ApprenantEntity apprenantByNumapprenant;
     private CalendrierEntity calendrierByDatejour;
     private ActionEntity actionByNumaction;
+    private Integer valeur;
 
     @Id
     @Column(name = "NUMAPPRENANT", nullable = false)
@@ -123,5 +124,15 @@ public class ObtientEntity {
 
     public void setActionByNumaction(ActionEntity actionByNumaction) {
         this.actionByNumaction = actionByNumaction;
+    }
+
+    @Basic
+    @Column(name = "VALEUR")
+    public Integer getValeur() {
+        return valeur;
+    }
+
+    public void setValeur(Integer valeur) {
+        this.valeur = valeur;
     }
 }

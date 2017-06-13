@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "mission", schema = "permispiste2", catalog = "")
+@Table(name = "mission", schema = "permispiste", catalog = "")
 public class MissionEntity {
     private int nummission;
     private int numjeu;

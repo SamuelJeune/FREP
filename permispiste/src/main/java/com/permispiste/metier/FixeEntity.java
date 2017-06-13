@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "fixe", schema = "permispiste2", catalog = "")
+@Table(name = "fixe", schema = "permispiste", catalog = "")
 @IdClass(FixeEntityPK.class)
 public class FixeEntity {
     private int nummission;

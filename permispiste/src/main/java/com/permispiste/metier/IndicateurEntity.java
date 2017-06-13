@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "indicateur", schema = "permispiste2", catalog = "")
+@Table(name = "indicateur", schema = "permispiste", catalog = "")
 public class IndicateurEntity {
     private int numindic;
     private int numaction;

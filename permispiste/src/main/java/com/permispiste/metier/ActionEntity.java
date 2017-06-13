@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by Robin on 12/06/2017.
  */
 @Entity
-@Table(name = "action", schema = "permispiste2", catalog = "")
+@Table(name = "action", schema = "permispiste", catalog = "")
 public class ActionEntity {
     private int numaction;
     private Integer actNumaction;
