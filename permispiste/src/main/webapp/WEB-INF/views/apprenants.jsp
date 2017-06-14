@@ -7,6 +7,9 @@
       F.R.E.P. - Liste des apprenants
     </jsp:attribute>
     <jsp:body>
+        <c:if test="${not empty msg}">
+            ${msg}
+        </c:if>
         <table>
             <thead>
                 <tr>

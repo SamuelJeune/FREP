@@ -20,8 +20,11 @@ public class ServiceApprenant extends Services {
         return apprenant;
     }
 
-    public int saveOrUpdate(ApprenantEntity apprenant) {
+    public void saveOrUpdate(ApprenantEntity apprenant) {
         super.saveOrUpdate(apprenant);
-        return apprenant.getNumapprenant();
+    }
+
+    public void remove(int id) {
+        super.remove(this.getById(id));
     }
 }
