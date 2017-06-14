@@ -34,13 +34,13 @@ public class ApprenantControleur {
     public String ajouterApprenant(Model model) {
         ApprenantEntity apprenant = new ApprenantEntity();
         model.addAttribute("apprenant", apprenant);
-        return "ajouterApprenant";
+        return "FormApprenant";
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String insererApprenant(@ModelAttribute("apprenant") @Validated ApprenantEntity apprenant, BindingResult result, RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
-            return "ajouterApprenant";
+            return "FormApprenant";
         }
         else {
             redirectAttributes.addFlashAttribute("css", "success");
@@ -52,8 +52,16 @@ public class ApprenantControleur {
             }
             SA.saveOrUpdate(apprenant);
 
-            return "redirect:/apprenants" + apprenant.getNumapprenant();
+            return "redirect:/apprenants/" + apprenant.getNumapprenant();
         }
+    }
+
+    @RequestMapping(value = "{id}/modifier", method = RequestMethod.GET)
+    public String modifierApprenant(@PathVariable("id") int id, Model model) {
+        ApprenantEntity apprenant = SA.getById(id);
+        model.addAttribute("apprenant", apprenant);
+
+        return "FormApprenant";
     }
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
