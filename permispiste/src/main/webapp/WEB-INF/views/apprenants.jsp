@@ -11,7 +11,10 @@
         <c:if test="${not empty msg}">
             ${msg}
         </c:if>
-        <table>
+        <div class="container">
+
+        <div class="jumbotron">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Num. apprenant</th>
@@ -30,13 +33,16 @@
                     <td>${apprenant.nomapprenant}</td>
                     <td>${apprenant.prenomapprenant}</td>
                     <td>
-                        <a href="${profileURL}"><button type="submit">Détails</button></a>
-                        <a href="${editURL}"><button type="submit">Modifier</button></a>
-                        <form method="post" action="${deleteURL}"><button type="submit">Supprimer</button></form>
+                        <a href="${profileURL}"><button  class="btn btn-primary btn-sm" type="submit">Détails</button></a>
+                        <a href="${editURL}"><button  class="btn btn-success btn-sm" type="submit">Modifier</button></a>
+                        <form method="post" action="${deleteURL}"><button  class="btn btn-danger btn-sm" type="submit">Supprimer</button></form>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+        </div>
+        </div>
+
     </jsp:body>
 </tags:layout>
