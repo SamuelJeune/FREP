@@ -5,7 +5,7 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Liste des jeux
+      F.R.E.P. - Liste des objectifs
     </jsp:attribute>
     <jsp:body>
         <c:if test="${not empty msg}">
