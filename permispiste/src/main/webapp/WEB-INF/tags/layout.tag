@@ -36,6 +36,9 @@
                     <li>
                         <a href="/missions/">Missions</a>
                     </li>
+                    <li>
+                        <a href="/objectifs//">Objectifs</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

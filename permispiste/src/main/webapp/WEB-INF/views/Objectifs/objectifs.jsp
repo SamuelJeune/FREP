@@ -16,19 +16,19 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Num. jeu</th>
-                        <th>Libellé jeu</th>
+                        <th>Num. objectif</th>
+                        <th>Libellé objectif</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${jeux}" var="jeu">
-                        <spring:url value="/jeux/${jeu.numjeu}" var="detailsURL" />
-                        <spring:url value="/jeux/${jeu.numjeu}/modifier" var="editURL" />
-                        <spring:url value="/jeux/${jeu.numjeu}/supprimer" var="deleteURL" />
+                    <c:forEach items="${objectifs}" var="objectif">
+                        <spring:url value="/jeux/${objectif.numobjectif}" var="detailsURL" />
+                        <spring:url value="/jeux/${objectif.numobjectif}/modifier" var="editURL" />
+                        <spring:url value="/jeux/${objectif.numobjectif}/supprimer" var="deleteURL" />
                         <tr>
-                            <td>${jeu.numjeu}</td>
-                            <td>${jeu.libellejeu}</td>
+                            <td>${objectif.numobjectif}</td>
+                            <td>${objectif.libobectif}</td>
                             <td>
                                 <a href="${detailsURL}" class="btn btn-primary btn-sm" type="submit">Détails</a>
                                 <a href="${editURL}" class="btn btn-primary btn-sm" type="submit">Modifier</a>
@@ -38,7 +38,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/jeux/ajouter">Ajouter un jeu</a>
+                <a href="/objectifs//ajouter">Ajouter un objectif</a>
             </div>
         </div>
     </jsp:body>
