@@ -15,6 +15,30 @@
     </head>
 
     <body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div>
+                <ul class="nav navbar-nav">
+                    <%--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li>--%>
+                    <li class="navbar-link">
+                        <a href="apprenants">Apprenants</a>
+                    </li>
+                    <li class="navbar-link">
+                        <a href="jeux">Jeux</a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
         <div id="content">
             <jsp:doBody/>
         </div>
@@ -25,6 +49,9 @@
             </div>
         </footer>
 
-        <script src="<c:url value="/resources/js/bootstrap.js" />"></script>
+
+        <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+        <script src="<c:url value="/resources/js/bootstrap.js" />" type="text/javascript"></script>
+
     </body>
 </html>
