@@ -5,46 +5,41 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Liste des missions
+      F.R.E.P. - Liste des jeux
     </jsp:attribute>
     <jsp:body>
         <c:if test="${not empty msg}">
             ${msg}
         </c:if>
         <div class="container">
-
             <div class="jumbotron">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Num. mission</th>
-                        <th>jeu associé</th>
-                        <th>Libellé mission</th>
+                        <th>Num. jeu</th>
+                        <th>Libellé jeu</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${missions}" var="mission">
-                        <spring:url value="/missions/${mission.nummission}" var="detailsURL" />
-                        <spring:url value="/missions/${mission.nummission}/modifier" var="editURL" />
-                        <spring:url value="/missions/${mission.nummission}/supprimer" var="deleteURL" />
+                    <c:forEach items="${jeux}" var="jeu">
+                        <spring:url value="/jeux/${jeu.numjeu}" var="detailsURL" />
+                        <spring:url value="/jeux/${jeu.numjeu}/modifier" var="editURL" />
+                        <spring:url value="/jeux/${jeu.numjeu}/supprimer" var="deleteURL" />
                         <tr>
-                            <td>${mission.nummission}</td>
-                            <td><a href="/jeux/${mission.numjeu}">${mission.jeu.libellejeu}</a></td>
-                            <td>${mission.libmission}</td>
+                            <td>${jeu.numjeu}</td>
+                            <td>${jeu.libellejeu}</td>
                             <td>
                                 <a href="${detailsURL}" class="btn btn-primary btn-sm" type="submit">Détails</a>
                                 <a href="${editURL}" class="btn btn-primary btn-sm" type="submit">Modifier</a>
                                 <form method="post" action="${deleteURL}"><button class="btn btn-danger btn-sm" type="submit">Supprimer</button></form>
-
                             </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/missions/ajouter">Ajouter une mission</a>
+                <a href="/jeux/ajouter">Ajouter un jeu</a>
             </div>
         </div>
-
     </jsp:body>
 </tags:layout>

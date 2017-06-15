@@ -24,15 +24,13 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <td>Num. mission</td>
                                 <td>Libellé missions</td>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach items="${missions}" var="mission">
                                 <tr>
-                                    <td>${mission.nummission}</td>
-                                    <td>${mission.libmission}</td>
+                                    <td><a href="/missions/${mission.nummission}">${mission.libmission}</a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

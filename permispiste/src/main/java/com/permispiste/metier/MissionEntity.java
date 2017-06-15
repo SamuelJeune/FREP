@@ -1,5 +1,7 @@
 package com.permispiste.metier;
 
+import com.permispiste.service.ServiceJeu;
+
 import javax.persistence.*;
 
 @Entity
@@ -40,6 +42,11 @@ public class MissionEntity {
         this.libmission = libmission;
     }
 
+    @Transient
+    public JeuEntity getJeu() {
+        ServiceJeu SJ = new ServiceJeu();
+        return SJ.getById(numjeu);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
