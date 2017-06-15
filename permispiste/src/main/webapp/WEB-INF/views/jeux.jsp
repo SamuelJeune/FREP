@@ -7,7 +7,9 @@
       F.R.E.P. - Liste des jeux
     </jsp:attribute>
     <jsp:body>
-        <table>
+        <div class="container">
+        <div class="jumbotron">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Num. jeu</th>
@@ -23,5 +25,7 @@
             </c:forEach>
             </tbody>
         </table>
+        </div>
+        </div>
     </jsp:body>
 </tags:layout>
