@@ -14,13 +14,16 @@
             <tr>
                 <th>Num. jeu</th>
                 <th>Libellé jeu</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${jeux}" var="jeu">
+
                 <tr>
                     <td>${jeu.numjeu}</td>
                     <td>${jeu.libellejeu}</td>
+                    <td><a href="jeux/${jeu.numjeu}" class="btn btn-primary btn-sm" type="submit">Détails</a></td>
                 </tr>
             </c:forEach>
             </tbody>
