@@ -8,16 +8,20 @@
       F.R.E.P. - Liste des apprenants
     </jsp:attribute>
     <jsp:body>
-        <form:form method="post" modelAttribute="apprenant" action="/apprenants">
-            <form:hidden path="numapprenant" />
+        <div class="container">
+            <div class="jumbotron">
+                <form:form method="post" modelAttribute="apprenant" action="/apprenants" class="form-inline">
+                    <form:hidden path="numapprenant" />
 
-            <form:label path="nomapprenant"> Nom : </form:label>
-            <form:input path="nomapprenant" />
+                    <form:label path="nomapprenant"> Nom : </form:label>
+                    <form:input path="nomapprenant" class="form-control"/>
 
-            <form:label path="prenomapprenant"> Prénom : </form:label>
-            <form:input path="prenomapprenant" />
+                    <form:label path="prenomapprenant"> Prénom : </form:label>
+                    <form:input path="prenomapprenant" class="form-control"/>
 
-            <button type="submit">Enregistrer</button>
-        </form:form>
+                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                </form:form>
+            </div>
+        </div>
     </jsp:body>
 </tags:layout>
