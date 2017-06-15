@@ -1,7 +1,11 @@
 package com.permispiste.controleur;
 
 import com.permispiste.metier.ApprenantEntity;
+import com.permispiste.metier.InscriptionEntity;
+import com.permispiste.metier.JeuEntity;
 import com.permispiste.service.ServiceApprenant;
+import com.permispiste.service.ServiceInscription;
+import com.permispiste.service.ServiceJeu;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("apprenants")
@@ -27,6 +32,13 @@ public class ApprenantControleur {
     public String afficheApprenant(@PathVariable("id") int id, Model model) {
         ApprenantEntity apprenant = SA.getById(id);
         model.addAttribute("apprenant", apprenant);
+
+        ServiceInscription SI = new ServiceInscription();
+        List<InscriptionEntity> inscriptionsForApprenant = SI.getByApprenant(id);
+        ServiceJeu SJ = new ServiceJeu();
+        List<JeuEntity> jeuxForId = inscriptionsForApprenant.stream().map(i -> SJ.getById(i.getNumjeu())).collect(Collectors.toList());
+        model.addAttribute("jeux", jeuxForId);
+
         return "afficheApprenant";
     }
 
@@ -43,6 +55,7 @@ public class ApprenantControleur {
             return "FormApprenant";
         }
         else {
+            SA.saveOrUpdate(apprenant);
             redirectAttributes.addFlashAttribute("css", "success");
             if(apprenant.getNumapprenant() == 0) {
                 redirectAttributes.addFlashAttribute("msg", "Apprenant ajouté avec succès.");
@@ -50,8 +63,6 @@ public class ApprenantControleur {
             else {
                 redirectAttributes.addFlashAttribute("msg", "Apprenant modifié avec succès.");
             }
-            SA.saveOrUpdate(apprenant);
-
             return "redirect:/apprenants/" + apprenant.getNumapprenant();
         }
     }
@@ -74,5 +85,34 @@ public class ApprenantControleur {
         return "redirect:/apprenants";
     }
 
+    @RequestMapping(value = "{id}/inscrire", method = RequestMethod.GET)
+    public String inscrireApprenant(@PathVariable("id") int id, Model model) {
+        InscriptionEntity inscription = new InscriptionEntity();
+        ApprenantEntity apprenant = SA.getById(id);
+        inscription.setNumapprenant(apprenant.getNumapprenant());
+        model.addAttribute("inscription", inscription);
 
+        List<ApprenantEntity> apprenants = SA.getAll();
+        model.addAttribute("apprenants", apprenants);
+
+        ServiceJeu SJ = new ServiceJeu();
+        List<JeuEntity> jeux = SJ.getAll();
+        model.addAttribute("jeux", jeux);
+
+        return "inscriptionJeu";
+    }
+
+    @RequestMapping(value = "inscription", method = RequestMethod.POST)
+    public String inscriptionApprenant(@ModelAttribute("inscription") @Validated InscriptionEntity inscription, BindingResult result, RedirectAttributes redirectAttributes) {
+        if(result.hasErrors()) {
+            return "inscriptionJeu";
+        }
+        else {
+            ServiceInscription SI = new ServiceInscription();
+            SI.saveOrUpdate(inscription);
+            redirectAttributes.addFlashAttribute("css", "success");
+            redirectAttributes.addFlashAttribute("msg", "Apprenant inscrit avec succès.");
+            return "redirect:/apprenants/" + inscription.getNumapprenant();
+        }
+    }
 }

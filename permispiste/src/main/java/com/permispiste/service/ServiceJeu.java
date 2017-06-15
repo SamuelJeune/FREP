@@ -11,4 +11,11 @@ public class ServiceJeu extends Services {
         jeux = this.execute(request, JeuEntity.class);
         return jeux;
     }
+
+    public JeuEntity getById(int id) {
+        JeuEntity jeu;
+        String request = "SELECT jeu FROM JeuEntity jeu WHERE jeu.numjeu = " + id;
+        jeu = this.execute(request, JeuEntity.class).get(0);
+        return jeu;
+    }
 }

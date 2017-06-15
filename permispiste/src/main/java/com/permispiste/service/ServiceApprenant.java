@@ -15,7 +15,7 @@ public class ServiceApprenant extends Services {
 
     public ApprenantEntity getById(int id) {
         ApprenantEntity apprenant;
-        String request = "SELECT apprenant FROM ApprenantEntity apprenant WHERE apprenant.id = " + id;
+        String request = "SELECT apprenant FROM ApprenantEntity apprenant WHERE apprenant.numapprenant = " + id;
         apprenant = this.execute(request, ApprenantEntity.class).get(0);
         return apprenant;
     }
@@ -24,7 +24,11 @@ public class ServiceApprenant extends Services {
         super.saveOrUpdate(apprenant);
     }
 
+    public void remove(ApprenantEntity apprenant) {
+        super.remove(apprenant);
+    }
+
     public void remove(int id) {
-        super.remove(this.getById(id));
+        this.remove(this.getById(id));
     }
 }

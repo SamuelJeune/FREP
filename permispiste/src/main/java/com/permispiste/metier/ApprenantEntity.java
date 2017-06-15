@@ -40,6 +40,12 @@ public class ApprenantEntity {
         this.prenomapprenant = prenomapprenant;
     }
 
+    @Transient
+    public String getFullname() {
+        return this.getPrenomapprenant() + " " + this.getNomapprenant();
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
