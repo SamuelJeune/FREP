@@ -2,9 +2,6 @@ package com.permispiste.metier;
 
 import javax.persistence.*;
 
-/**
- * Created by Robin on 13/06/2017.
- */
 @Entity
 @Table(name = "jeu", schema = "permispiste", catalog = "")
 public class JeuEntity {
@@ -12,6 +9,7 @@ public class JeuEntity {
     private String libellejeu;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NUMJEU")
     public int getNumjeu() {
         return numjeu;

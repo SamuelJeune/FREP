@@ -27,14 +27,19 @@
                                     <tr>
                                         <td>Num. jeu</td>
                                         <td>Libellé jeu</td>
+                                        <td>Acions</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <c:forEach items="${jeux}" var="jeu">
                                         <spring:url value="/jeux/${jeu.numjeu}" var="jeuURL" />
+                                        <spring:url value="/apprenants/${apprenant.numapprenant}/desinscrire/${jeu.numjeu}" var="unsubscribeURL" />
                                         <tr>
                                             <td><a href="${jeuURL}">${jeu.numjeu}</a></td>
                                             <td><a href="${jeuURL}">${jeu.libellejeu}</a></td>
+                                            <td>
+                                                <form method="POST" action="${unsubscribeURL}"><button class="btn btn-danger btn-sm" type="submit">Désinscrire</button></form>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

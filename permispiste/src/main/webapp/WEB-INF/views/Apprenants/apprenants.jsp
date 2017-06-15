@@ -41,6 +41,7 @@
             </c:forEach>
             </tbody>
         </table>
+            <a href="/apprenants/ajouter">Ajouter un apprenant</a>
         </div>
         </div>
 

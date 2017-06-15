@@ -25,7 +25,7 @@ public class ApprenantControleur {
     public String afficheApprenants(Model model) {
         List<ApprenantEntity> apprenants = SA.getAll();
         model.addAttribute("apprenants", apprenants);
-        return "apprenants";
+        return "Apprenants/apprenants";
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
@@ -39,30 +39,25 @@ public class ApprenantControleur {
         List<JeuEntity> jeuxForId = inscriptionsForApprenant.stream().map(i -> SJ.getById(i.getNumjeu())).collect(Collectors.toList());
         model.addAttribute("jeux", jeuxForId);
 
-        return "afficheApprenant";
+        return "Apprenants/afficheApprenant";
     }
 
     @RequestMapping(value = "ajouter", method = RequestMethod.GET)
     public String ajouterApprenant(Model model) {
         ApprenantEntity apprenant = new ApprenantEntity();
         model.addAttribute("apprenant", apprenant);
-        return "FormApprenant";
+        return "Forms/FormApprenant";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "creer", method = RequestMethod.POST)
     public String insererApprenant(@ModelAttribute("apprenant") @Validated ApprenantEntity apprenant, BindingResult result, RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
-            return "FormApprenant";
+            return "Forms/FormApprenant";
         }
         else {
             SA.saveOrUpdate(apprenant);
             redirectAttributes.addFlashAttribute("css", "success");
-            if(apprenant.getNumapprenant() == 0) {
-                redirectAttributes.addFlashAttribute("msg", "Apprenant ajouté avec succès.");
-            }
-            else {
-                redirectAttributes.addFlashAttribute("msg", "Apprenant modifié avec succès.");
-            }
+            redirectAttributes.addFlashAttribute("msg", "Apprenant enregistré avec succès.");
             return "redirect:/apprenants/" + apprenant.getNumapprenant();
         }
     }
@@ -72,7 +67,7 @@ public class ApprenantControleur {
         ApprenantEntity apprenant = SA.getById(id);
         model.addAttribute("apprenant", apprenant);
 
-        return "FormApprenant";
+        return "Forms/FormApprenant";
     }
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
@@ -99,13 +94,13 @@ public class ApprenantControleur {
         List<JeuEntity> jeux = SJ.getAll();
         model.addAttribute("jeux", jeux);
 
-        return "inscriptionJeu";
+        return "Forms/FormInscriptionJeu";
     }
 
     @RequestMapping(value = "inscription", method = RequestMethod.POST)
     public String inscriptionApprenant(@ModelAttribute("inscription") @Validated InscriptionEntity inscription, BindingResult result, RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
-            return "inscriptionJeu";
+            return "Forms/FormInscriptionJeu";
         }
         else {
             ServiceInscription SI = new ServiceInscription();
@@ -114,5 +109,16 @@ public class ApprenantControleur {
             redirectAttributes.addFlashAttribute("msg", "Apprenant inscrit avec succès.");
             return "redirect:/apprenants/" + inscription.getNumapprenant();
         }
+    }
+
+    @RequestMapping(value="{idA}/desinscrire/{idJ}", method = RequestMethod.POST)
+    public String desinscrireApprenant(@PathVariable("idA") int idA, @PathVariable("idJ") int idJ, RedirectAttributes redirectAttributes) {
+        ServiceInscription SI = new ServiceInscription();
+        SI.remove(idA, idJ);
+
+        redirectAttributes.addFlashAttribute("css", "success");
+        redirectAttributes.addFlashAttribute("msg", "Apprenant désinscrit avec succès.");
+
+        return "redirect:/apprenants/" + idA;
     }
 }

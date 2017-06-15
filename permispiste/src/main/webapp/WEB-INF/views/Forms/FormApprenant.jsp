@@ -10,7 +10,7 @@
     <jsp:body>
         <div class="container">
             <div class="jumbotron">
-                <form:form method="post" modelAttribute="apprenant" action="/apprenants" class="form-inline">
+                <form:form method="post" modelAttribute="apprenant" action="/apprenants/creer" class="form-inline">
                     <form:hidden path="numapprenant" />
 
                     <form:label path="nomapprenant"> Nom : </form:label>

@@ -18,4 +18,16 @@ public class ServiceJeu extends Services {
         jeu = this.execute(request, JeuEntity.class).get(0);
         return jeu;
     }
+
+    public void saveOrUpdate(JeuEntity jeu) {
+        super.saveOrUpdate(jeu);
+    }
+
+    public void remove(int id) {
+        this.remove(this.getById(id));
+    }
+
+    public void remove(JeuEntity jeu) {
+        super.remove(jeu);
+    }
 }

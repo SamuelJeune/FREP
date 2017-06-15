@@ -28,10 +28,13 @@
                     <%--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Link</a></li>--%>
                     <li class="navbar-link">
-                        <a href="apprenants">Apprenants</a>
+                        <a href="/apprenants">Apprenants</a>
                     </li>
                     <li class="navbar-link">
-                        <a href="jeux">Jeux</a>
+                        <a href="/jeux">Jeux</a>
+                    </li>
+                    <li>
+                        <a href="/missions/">Missions</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -8,9 +8,9 @@
       F.R.E.P. - Jeu : ${jeu.libellejeu}
     </jsp:attribute>
     <jsp:body>
-        <%--<c:if test="${not empty msg}">--%>
-            <%--${msg}--%>
-        <%--</c:if>--%>
+        <c:if test="${not empty msg}">
+            ${msg}
+        </c:if>
         <div class="container">
             <div class="jumbotron">
                 Jeu : ${jeu.libellejeu}
@@ -33,6 +33,25 @@
                                 <tr>
                                     <td>${mission.nummission}</td>
                                     <td>${mission.libmission}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:otherwise>
+                </c:choose>
+                Apprenants :
+                <c:choose>
+                    <c:when test="${empty apprenants}">
+                        Aucun apprenant n'est inscrit à ce jeu.
+                    </c:when>
+                    <c:otherwise>
+                        <table class="table table-striped">
+                            <tbody>
+                            <c:forEach items="${apprenants}" var="apprenant">
+                                <tr>
+                                    <td>
+                                        <a href="/apprenants/${apprenant.numapprenant}">${apprenant.prenomapprenant} ${apprenant.nomapprenant}</a>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

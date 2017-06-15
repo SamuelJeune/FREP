@@ -4,9 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by Robin on 13/06/2017.
- */
 public class EstAssocieEntityPK implements Serializable {
     private int numaction;
     private int numobjectif;

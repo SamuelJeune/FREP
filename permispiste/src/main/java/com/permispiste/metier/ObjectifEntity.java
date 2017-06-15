@@ -2,9 +2,6 @@ package com.permispiste.metier;
 
 import javax.persistence.*;
 
-/**
- * Created by Robin on 13/06/2017.
- */
 @Entity
 @Table(name = "objectif", schema = "permispiste", catalog = "")
 public class ObjectifEntity {
