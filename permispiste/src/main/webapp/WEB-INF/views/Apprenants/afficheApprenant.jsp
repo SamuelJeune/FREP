@@ -13,6 +13,7 @@
             ${msg}
         </c:if>
         <div class="container">
+            
             <div class="jumbotron">
                 Apprennant : ${apprenant.prenomapprenant} ${apprenant.nomapprenant}
                 <br />
