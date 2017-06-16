@@ -12,6 +12,8 @@
             ${msg}
         </c:if>
         <div class="container">
+            <h1 class="text-center">Liste des jeux</h1>
+
             <div class="jumbotron">
                 <table class="table table-striped">
                     <thead>
