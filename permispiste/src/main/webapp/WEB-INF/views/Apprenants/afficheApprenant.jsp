@@ -48,45 +48,54 @@
                             </table>
                         </c:otherwise>
                     </c:choose>
-
                 <a href="/apprenants/${apprenant.numapprenant}/inscrire">
                     <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
                         <span class="glyphicon glyphicon-plus"></span> Inscire à un jeu
                     </button>
                 </a>
-
             </div>
 
-
-            <div class="jumbotron">
-                <p>Missions en attente :</p>
-                <c:choose>
-                <c:when test="${empty missions}">
-                    Cet apprenant n'a pas de mission en attente.
-                </c:when>
-                <c:otherwise>
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <td>Num. Missions</td>
-                            <td>Libellé Missions</td>
-                            <td>Actions</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${missions}" var="mission">
-                            <spring:url value="/missions/${mission.nummission}" var="missionURL" />
-                            <tr>
-                                <td><a href="${missionURL}">${mission.nummission}</a></td>
-                                <td><a href="${missionURL}">${mission.libmission}</a></td>
-                                <td><a href="#" ><button  class="btn btn-primary btn-sm" type="submit">Voir les actions de cette mission</button></a> </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </c:otherwise>
-                </c:choose>
-            </div>
+            <ul>
+                <c:forEach items="${jeux}" var="jeu">
+                    <li>
+                        Jeu n°${jeu.numjeu} : ${jeu.libellejeu}
+                        /
+                        Missions complétées : ${scoreForJeux.get(jeu)} / ${missions.get(jeu).size()}
+                        <ul>
+                            <c:forEach items="${missions.get(jeu)}" var="mission">
+                                <li>
+                                    Mission n°${mission.nummission} : ${mission.libmission}
+                                    /
+                                    Objectifs complétées : ${scoreForMissions.get(mission)} / ${objectifs.get(mission).size()}
+                                    <ul>
+                                        <c:forEach items="${objectifs.get(mission)}" var="objectif">
+                                            Objectif n°${objectif.numobjectif} : ${objectif.libobjectif}
+                                            /
+                                            Actions complétées : ${scoreForObjectifs.get(objectif)} / ${actions.get(objectif).size()}
+                                            <ul>
+                                                <c:forEach items="${actions.get(objectif)}" var="action">
+                                                    Action n°${action.numaction} : ${action.libaction}
+                                                    /
+                                                    <c:choose>
+                                                        <c:when test="${not empty obtients.get(action)}">
+                                                            Score : ${obtients.get(action).valeur} / 20
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            Pas de score
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <a href="/actions/${action.numaction}/generer/${apprenant.numapprenant}"> Générer un score</a>
+                                                    <br />
+                                                </c:forEach>
+                                            </ul>
+                                        </c:forEach>
+                                    </ul>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                </c:forEach>
+            </ul>
 
         </div>
     </jsp:body>

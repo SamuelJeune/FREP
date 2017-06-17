@@ -1,13 +1,7 @@
 package com.permispiste.controleur;
 
-import com.permispiste.metier.ActionEntity;
-import com.permispiste.metier.EstAssocieEntity;
-import com.permispiste.metier.MissionEntity;
-import com.permispiste.metier.ObjectifEntity;
-import com.permispiste.service.ServiceAction;
-import com.permispiste.service.ServiceEstAssocie;
-import com.permispiste.service.ServiceMission;
-import com.permispiste.service.ServiceObjectif;
+import com.permispiste.metier.*;
+import com.permispiste.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -140,5 +134,17 @@ public class ActionControleur {
         redirectAttributes.addFlashAttribute("msg", "Objectif retiré avec succès.");
 
         return "redirect:/actions/" + idA;
+    }
+
+    @RequestMapping(value = "{idAc}/generer/{idAp}", method = RequestMethod.GET)
+    public String genererScore(@PathVariable("idAc") int idAc, @PathVariable("idAp") int idAp) {
+        ServiceObtient SO = new ServiceObtient();
+        ObtientEntity obtient = new ObtientEntity();
+        obtient.setNumaction(idAc);
+        obtient.setNumapprenant(idAp);
+        obtient.setValeur(((int) Math.round(Math.random() * 20)));
+        SO.saveOrUpdate(obtient);
+
+        return "redirect:/apprenants/" + idAp;
     }
 }

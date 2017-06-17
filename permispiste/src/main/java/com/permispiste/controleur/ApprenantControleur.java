@@ -1,13 +1,7 @@
 package com.permispiste.controleur;
 
-import com.permispiste.metier.ApprenantEntity;
-import com.permispiste.metier.InscriptionEntity;
-import com.permispiste.metier.JeuEntity;
-import com.permispiste.metier.MissionEntity;
-import com.permispiste.service.ServiceApprenant;
-import com.permispiste.service.ServiceInscription;
-import com.permispiste.service.ServiceJeu;
-import com.permispiste.service.ServiceMission;
+import com.permispiste.metier.*;
+import com.permispiste.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -37,18 +33,97 @@ public class ApprenantControleur {
         model.addAttribute("apprenant", apprenant);
 
         ServiceInscription SI = new ServiceInscription();
-        List<InscriptionEntity> inscriptionsForApprenant = SI.getByApprenant(id);
         ServiceJeu SJ = new ServiceJeu();
-        List<JeuEntity> jeuxForId = inscriptionsForApprenant.stream().map(i -> SJ.getById(i.getNumjeu())).collect(Collectors.toList());
-        model.addAttribute("jeux", jeuxForId);
         ServiceMission SM = new ServiceMission();
-        List<MissionEntity> missionsForJeux = new ArrayList<>();
-        for (JeuEntity aJeuxForId : jeuxForId) {
-            List<MissionEntity> missionsForJeu = SM.getByJeu(aJeuxForId.getNumjeu());
-            missionsForJeux.addAll(missionsForJeu);
-        }
-        model.addAttribute("missions", missionsForJeux);
+        ServiceFixe SF = new ServiceFixe();
+        ServiceObjectif SObj = new ServiceObjectif();
+        ServiceEstAssocie SEA = new ServiceEstAssocie();
+        ServiceAction SAc = new ServiceAction();
+        ServiceObtient SObt = new ServiceObtient();
+        Integer score;
 
+        List<JeuEntity> jeuxForId = SI.getByApprenant(id).stream().map(i -> SJ.getById(i.getNumjeu())).collect(Collectors.toList());
+        model.addAttribute("jeux", jeuxForId);
+
+        Map<JeuEntity, List<MissionEntity>> missionsForId = new HashMap<>();
+        for(JeuEntity jeu : jeuxForId) {
+            missionsForId.put(jeu, SM.getByJeu(jeu.getNumjeu()));
+        }
+        model.addAttribute("missions", missionsForId);
+
+        Map<MissionEntity, List<ObjectifEntity>> objectifsForId = new HashMap<>();
+        for(JeuEntity jeu : jeuxForId) {
+            for(MissionEntity mission : missionsForId.get(jeu)) {
+                objectifsForId.put(mission, SF.getByMission(mission.getNummission()).stream().map(f -> SObj.getById(f.getNumobjectif())).collect(Collectors.toList()));
+            }
+        }
+        model.addAttribute("objectifs", objectifsForId);
+
+        Map<ObjectifEntity, List<ActionEntity>> actionsForId = new HashMap<>();
+        for(JeuEntity jeu : jeuxForId) {
+            for(MissionEntity mission : missionsForId.get(jeu)) {
+                for(ObjectifEntity objectif : objectifsForId.get(mission)) {
+                    actionsForId.put(objectif, SEA.getByObjectif(objectif.getNumobjectif()).stream().map(ea -> SAc.getById(ea.getNumaction())).collect(Collectors.toList()));
+                }
+            }
+        }
+        model.addAttribute("actions", actionsForId);
+
+        Map<ActionEntity, ObtientEntity> obtientsForId = new HashMap<>();
+        for(JeuEntity jeu : jeuxForId) {
+            for(MissionEntity mission : missionsForId.get(jeu)) {
+                for(ObjectifEntity objectif : objectifsForId.get(mission)) {
+                    for(ActionEntity action : actionsForId.get(objectif)) {
+                        obtientsForId.put(action, SObt.getByAction(action.getNumaction()).stream().filter(o -> o.getNumapprenant() == id).findFirst().orElse(null));
+                    }
+                }
+            }
+        }
+        model.addAttribute("obtients", obtientsForId);
+
+        Map<ObjectifEntity, Integer> scoreForObjectifs = new HashMap<>();
+        ObtientEntity obtenu;
+        for(JeuEntity jeu : jeuxForId) {
+            for(MissionEntity mission : missionsForId.get(jeu)) {
+                for(ObjectifEntity objectif : objectifsForId.get(mission)) {
+                    score = 0;
+                    for(ActionEntity action : actionsForId.get(objectif)) {
+                        obtenu = obtientsForId.get(action);
+                        if(obtenu != null && obtenu.getValeur() >= action.getScoremin()) {
+                            score++;
+                        }
+                    }
+                    scoreForObjectifs.put(objectif, score);
+                }
+            }
+        }
+        model.addAttribute("scoreForObjectifs", scoreForObjectifs);
+
+        Map<MissionEntity, Integer> scoreForMissions = new HashMap<>();
+        for(JeuEntity jeu : jeuxForId) {
+            for(MissionEntity mission : missionsForId.get(jeu)) {
+                score = 0;
+                for(ObjectifEntity objectif : objectifsForId.get(mission)) {
+                    if(scoreForObjectifs.get(objectif) == actionsForId.get(objectif).size()) {
+                        score++;
+                    }
+                }
+                scoreForMissions.put(mission, score);
+            }
+        }
+        model.addAttribute("scoreForMissions", scoreForMissions);
+
+        Map<JeuEntity, Integer> scoreForJeux = new HashMap<>();
+        for(JeuEntity jeu : jeuxForId) {
+            score = 0;
+            for(MissionEntity mission : missionsForId.get(jeu)) {
+                if(scoreForMissions.get(mission) == objectifsForId.get(mission).size()) {
+                    score++;
+                }
+            }
+            scoreForJeux.put(jeu, score);
+        }
+        model.addAttribute("scoreForJeux", scoreForJeux);
 
         return "Apprenants/afficheApprenant";
     }
