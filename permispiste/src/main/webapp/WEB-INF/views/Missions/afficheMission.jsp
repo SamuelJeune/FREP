@@ -5,30 +5,32 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Mission : ${mission.libmission}
+      PermisPiste - Mission : ${mission.libmission}
     </jsp:attribute>
     <jsp:body>
-        <c:if test="${not empty msg}">
-            ${msg}
-        </c:if>
-        <div class="container">
+        <div class="container-fluid">
+            <h1>Mission : ${mission.libmission}</h1>
+
+            <c:if test="${not empty msg}">
+                <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
+            </c:if>
+
             <div class="jumbotron">
-                Mission : ${mission.libmission}
-                <br />
-                Cette mission fait parti du jeu suivant : <a href="/jeux/${jeu.numjeu}">${jeu.libellejeu}</a>
-                <br />
-                Objectifs de la mission :
+                <p>
+                    Cette mission fait parti du jeu suivant : <a href="/jeux/${jeu.numjeu}">${jeu.libellejeu}</a>
+                </p>
+                <h2>Objectifs de la mission : </h2>
                 <c:choose>
                     <c:when test="${empty objectifs}">
-                        Cette mission ne possède pas d'objectifs.
+                        <p>Cette mission ne possède pas d'objectifs.</p>
                     </c:when>
                     <c:otherwise>
-                        <table class="table table-striped">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <td>Num. ojectif</td>
-                                    <td>Libellé objectif</td>
-                                    <td>Actions</td>
+                                    <th>NUMERO DE L'OBJECTIF</th>
+                                    <th>NOM DE L'OBJECTIF</th>
+                                    <th>ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,7 +45,13 @@
                         </table>
                     </c:otherwise>
                 </c:choose>
-                <a href="/missions/${mission.nummission}/fixer-objectif">Ajouter un objectif</a>
+
+                <a href="/missions/${mission.nummission}/fixer-objectif">
+                    <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
+                        <span class="glyphicon glyphicon-plus"></span> Ajouter un objectif
+                    </button>
+                </a>
+
             </div>
         </div>
     </jsp:body>

@@ -5,22 +5,22 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Liste des jeux
+      PermisPiste - Liste des jeux
     </jsp:attribute>
     <jsp:body>
         <c:if test="${not empty msg}">
             ${msg}
         </c:if>
-        <div class="container">
-            <h1 class="text-center">Liste des jeux</h1>
+        <div class="container-fluid">
+            <h1>Liste des jeux :</h1>
 
             <div class="jumbotron">
-                <table class="table table-striped">
+                <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Num. jeu</th>
-                        <th>Libellé jeu</th>
-                        <th>Actions</th>
+                        <th>NUMERO</th>
+                        <th>NOM DU JEU</th>
+                        <th>ACTIONS</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,15 +32,21 @@
                             <td>${jeu.numjeu}</td>
                             <td>${jeu.libellejeu}</td>
                             <td>
-                                <a href="${detailsURL}" class="btn btn-primary btn-sm" type="submit">Détails</a>
-                                <a href="${editURL}" class="btn btn-primary btn-sm" type="submit">Modifier</a>
-                                <form method="post" action="${deleteURL}"><button class="btn btn-danger btn-sm" type="submit">Supprimer</button></form>
+                                <a href="${detailURL}"><button  class="btn" type="submit" style="background-color: #18bc9c; color:whitesmoke;">Détailler</button></a>
+                                <a href="${editURL}"><button  class="btn" type="submit" style="background-color: #2c3e50; color:whitesmoke;">Modifier</button></a>
+                                <a href="${deleteURL}"><button  class="btn" type="submit" style="background-color: #e74c3c; color:whitesmoke;">Supprimer</button></a>
                             </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/jeux/ajouter">Ajouter un jeu</a>
+
+                <a href="/jeux/ajouter">
+                    <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
+                        <span class="glyphicon glyphicon-plus"></span> Ajouter un jeu
+                    </button>
+                </a>
+
             </div>
         </div>
     </jsp:body>

@@ -5,28 +5,30 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Objectif : ${objectif.libobjectif}
+      PermisPiste - Objectif : ${objectif.libobjectif}
     </jsp:attribute>
     <jsp:body>
-        <c:if test="${not empty msg}">
-            ${msg}
-        </c:if>
-        <div class="container">
+
+        <div class="container-fluid">
+            <h1>Libellé : ${objectif.libobjectif}</h1>
+
+            <c:if test="${not empty msg}">
+                <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
+            </c:if>
+
             <div class="jumbotron">
-                Libellé : ${objectif.libobjectif}
-                <br />
-                Missions liées :
+                <h2>Missions liées :</h2>
                 <c:choose>
                     <c:when test="${empty missions}">
-                        aucune mission liée.
+                        <p>aucune mission liée.</p>
                     </c:when>
                     <c:otherwise>
-                        <table>
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Num. mission</th>
-                                    <th>Libellé mission</th>
-                                    <th>Actions</th>
+                                    <th>NUMERO DE LA MISSION</th>
+                                    <th>NOM DE LA MISSION</th>
+                                    <th>ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,7 +43,13 @@
                         </table>
                     </c:otherwise>
                 </c:choose>
-                <a href="/objectifs/${objectif.numobjectif}/ajouter-mission">Lier à une mission</a>
+
+                <a href="/objectifs/${objectif.numobjectif}/ajouter-mission">
+                    <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
+                        <span class="glyphicon glyphicon-plus"></span> Lier à une mission
+                    </button>
+                </a>
+
             </div>
         </div>
     </jsp:body>

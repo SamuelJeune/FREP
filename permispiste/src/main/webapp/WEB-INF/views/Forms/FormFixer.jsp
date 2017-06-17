@@ -6,10 +6,12 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Fixer un objectif
+      PermisPiste - Fixer un objectif
     </jsp:attribute>
     <jsp:body>
         <div class="container">
+            <h1 class="text-center">Fixer un objectif</h1>
+
             <div class="jumbotron">
                 <c:if test="${fixe.nummission != 0}"><c:url value="/missions/fixer" var="formURL" /></c:if>
                 <c:if test="${fixe.numobjectif != 0}"><c:url value="/objectifs/fixer" var="formURL" /></c:if>

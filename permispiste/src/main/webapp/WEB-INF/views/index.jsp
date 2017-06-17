@@ -4,36 +4,35 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P.
+      PermisPiste
     </jsp:attribute>
     <jsp:body>
-        <div class="container">
+        <div class="container-fluid">
 
+            <h1>Accueil</h1>
 
-            <h2 class="text-center">F.R.E.P.</h2>
-            <br>
             <div class="jumbotron">
-                <div class="container">
-
-                    <div class="row">
-                        <div class="col-6">
-                            <p>Bienvenu dans l'application F.R.E.P</p>
-                        </div>
-                        <div class="col-4">
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <a class="btn btn-primary btn-lg btn-block" href="apprenants">Accéder aux éleves</a>
+                <table>
+                    <tr>
+                        <td>
+                            <h2>Bienvenue dans l'application Permis Piste!</h2>
+                            <div class="container">
+                                <p> Cette application permettra de suivre pas à pas votre apprentissage</p>
+                                <p>En vous souhaitant une agréable visite !</p>
+                                <br/>
+                                <h3>Pour commencer, vous pouvez vous :</h3>
+                                <ol>
+                                    <li> Enregistrer en tant qu'apprenant </li>
+                                    <li> Inscrire à un jeu depuis la liste </li>
+                                    <li> Accéder à la liste des missions pour valider des actions </li>
+                                </ol>
                             </div>
-                            <div class="col-md-2"></div>
-                            <div class="col-md-5">
-                                <a class="btn btn-primary btn-lg btn-block" href="jeux">Accéder aux jeux</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </td>
+                        <td>
+                            <img src="<c:url value="/resources/images/polytech.png" />">
+                        </td>
+                    </tr>
+                </table>
             </div>
 
         </div>

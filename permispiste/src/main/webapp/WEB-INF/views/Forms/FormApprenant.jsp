@@ -5,10 +5,12 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Liste des apprenants
+      PermisPiste - Modifier Apprenant
     </jsp:attribute>
     <jsp:body>
         <div class="container">
+            <h1 class="text-center">Modifier Apprenant</h1>
+
             <div class="jumbotron">
                 <form:form method="post" modelAttribute="apprenant" action="/apprenants/creer" class="form-inline">
                     <form:hidden path="numapprenant" />

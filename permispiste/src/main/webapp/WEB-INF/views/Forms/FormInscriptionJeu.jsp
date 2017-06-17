@@ -6,10 +6,12 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Inscription à un jeu
+      PermisPiste - Inscription à un jeu
     </jsp:attribute>
     <jsp:body>
         <div class="container">
+            <h1 class="text-center">Inscription à un jeu</h1>
+
             <div class="jumbotron">
         <form:form method="post" modelAttribute="inscription" action="/apprenants/inscription" class="form-inline">
             <form:select path="numapprenant" items="${apprenants}" itemLabel="fullname" itemValue="numapprenant" class="form-control"/>

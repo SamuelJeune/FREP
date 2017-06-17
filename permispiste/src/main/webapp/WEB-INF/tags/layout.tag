@@ -15,33 +15,42 @@
     </head>
 
     <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" style="background-color: #2c3e50;">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Home</a>
-            </div>
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/" style="color:white;">Permis Piste</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="container"style="margin-top:7px;">
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">search</span>
+                            <input type="text" class="form-control" placeholder="Nom apprenant" aria-describedby="basic-addon1">
+                        </div>
+                    </form>
+                    </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div>
-                <ul class="nav navbar-nav">
-                    <%--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Link</a></li>--%>
-                    <li class="navbar-link">
-                        <a href="/apprenants">Apprenants</a>
-                    </li>
-                    <li class="navbar-link">
-                        <a href="/jeux">Jeux</a>
-                    </li>
-                    <li>
-                        <a href="/missions">Missions</a>
-                    </li>
-                    <li>
-                        <a href="/objectifs">Objectifs</a>
-                    </li>
+                </li>
+            </ul>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a href="/" style="color:white;">Accueil</a> </li>
+                    <li> <a href="/missions" style="color:white;">Missions</a> </li>
+                    <li> <a href="/apprenants" style="color:white;">Apprenants</a></li>
+                    <li> <a href="/jeux" style="color:white;">Jeux</a> </li>
+                    <li> <a href="/objectifs" style="color:white;">Objectifs</a></li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </nav>
 
 

@@ -5,10 +5,12 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Formulaire des objectifs
+        PermisPiste - Formulaire des objectifs
     </jsp:attribute>
     <jsp:body>
         <div class="container">
+            <h1 class="text-center">Formulaire des objectifs</h1>
+
             <div class="jumbotron">
                 <form:form method="post" modelAttribute="objectif" action="/objectifs/creer" class="form-inline">
                     <form:hidden path="numobjectif" />

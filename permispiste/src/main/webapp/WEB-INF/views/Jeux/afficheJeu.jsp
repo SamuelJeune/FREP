@@ -5,27 +5,28 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Jeu : ${jeu.libellejeu}
+      PermisPiste - Jeu : ${jeu.libellejeu}
     </jsp:attribute>
     <jsp:body>
-        <c:if test="${not empty msg}">
-            ${msg}
-        </c:if>
-        <div class="container">
+        <div class="container-fluid">
+            <h1>Jeu : ${jeu.libellejeu}</h1>
+
+            <c:if test="${not empty msg}">
+                <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
+            </c:if>
+
             <div class="jumbotron">
-                Jeu : ${jeu.libellejeu}
-                <br />
-                Missions :
+                <h2>Missions :</h2>
                 <c:choose>
                     <c:when test="${empty missions}">
-                        Ce jeu ne possède pas de missions.
+                        <p>Ce jeu ne possède pas de missions.</p>
                     </c:when>
                     <c:otherwise>
-                        <table class="table table-striped">
+                        <table class="table table-hover">
                             <thead>
-                            <tr>
-                                <td>Libellé missions</td>
-                            </tr>
+                                <tr>
+                                    <th>Libellé missions</th>
+                                </tr>
                             </thead>
                             <tbody>
                             <c:forEach items="${missions}" var="mission">
@@ -37,13 +38,13 @@
                         </table>
                     </c:otherwise>
                 </c:choose>
-                Apprenants :
+                <h2>Apprenants :</h2>
                 <c:choose>
                     <c:when test="${empty apprenants}">
-                        Aucun apprenant n'est inscrit à ce jeu.
+                        <p>Aucun apprenant n'est inscrit à ce jeu.</p>
                     </c:when>
                     <c:otherwise>
-                        <table class="table table-striped">
+                        <table class="table table-hover">
                             <tbody>
                             <c:forEach items="${apprenants}" var="apprenant">
                                 <tr>

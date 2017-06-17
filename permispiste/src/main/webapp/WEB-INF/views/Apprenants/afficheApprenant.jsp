@@ -6,29 +6,30 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Apprenant : ${apprenant.prenomapprenant} ${apprenant.nomapprenant}
+      PermisPiste - Apprenant : ${apprenant.prenomapprenant} ${apprenant.nomapprenant}
     </jsp:attribute>
     <jsp:body>
-        <c:if test="${not empty msg}">
-            ${msg}
-        </c:if>
-        <div class="container">
-            
+
+        <div class="container-fluid">
+            <h1>Apprennant : ${apprenant.prenomapprenant} ${apprenant.nomapprenant}</h1>
+
+            <c:if test="${not empty msg}">
+                <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
+            </c:if>
+
             <div class="jumbotron">
-                Apprennant : ${apprenant.prenomapprenant} ${apprenant.nomapprenant}
-                <br />
-                Inscriptions :
+                <h2>Inscriptions :</h2>
                     <c:choose>
                         <c:when test="${empty jeux}">
-                            Cet apprenant n'est inscrit à aucun jeu.
+                            <p>Cet apprenant n'est inscrit à aucun jeu.</p>
                         </c:when>
                         <c:otherwise>
-                            <table class="table table-striped">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <td>Num. jeu</td>
-                                        <td>Libellé jeu</td>
-                                        <td>Acions</td>
+                                        <th>NUMERO DU JEU</th>
+                                        <th>NOM DU JEU</th>
+                                        <th>ACTIONS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +48,13 @@
                             </table>
                         </c:otherwise>
                     </c:choose>
-                <a href="/apprenants/${apprenant.numapprenant}/inscrire">Inscire à un jeu</a>
+
+                <a href="/apprenants/${apprenant.numapprenant}/inscrire">
+                    <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
+                        <span class="glyphicon glyphicon-plus"></span> Inscire à un jeu
+                    </button>
+                </a>
+
             </div>
         </div>
     </jsp:body>

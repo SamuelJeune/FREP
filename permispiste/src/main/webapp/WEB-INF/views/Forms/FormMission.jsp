@@ -5,10 +5,12 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Formulaire des missions
+      PermisPiste - Formulaire des missions
     </jsp:attribute>
     <jsp:body>
         <div class="container">
+            <h1 class="text-center">Formulaire des missions</h1>
+
             <div class="jumbotron">
                 <form:form method="post" modelAttribute="mission" action="/missions/creer" class="form-inline">
                     <form:hidden path="nummission" />
