@@ -39,6 +39,9 @@
                     <li>
                         <a href="/objectifs">Objectifs</a>
                     </li>
+                    <li>
+                        <a href="/actions">Actions</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -56,7 +59,7 @@
         </footer>
 
 
-        <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/resources/js/jquery-3.2.1.js"></script>
         <script src="<c:url value="/resources/js/bootstrap.js" />" type="text/javascript"></script>
 
     </body>

@@ -11,6 +11,7 @@ public class ActionEntity {
     private Integer scoremin;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NUMACTION")
     public int getNumaction() {
         return numaction;
