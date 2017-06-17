@@ -50,19 +50,18 @@
                     </button>
                 </a>
 
-                <h2>Actions requises :</h2>
+                <h2>Actions associées à cet objectif : </h2>
                 <c:choose>
                     <c:when test="${empty actions}">
                         Cet objectif ne possède pas d'actions.
                     </c:when>
                     <c:otherwise>
-                        Actions associées à cet objectif :
-                        <table>
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <td>Num. action</td>
-                                    <td>Libellé action</td>
-                                    <td>Actions</td>
+                                    <th>NUMERO DE L'ACTION</th>
+                                    <th>NOM DE L'ACTION</th>
+                                    <th>ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>

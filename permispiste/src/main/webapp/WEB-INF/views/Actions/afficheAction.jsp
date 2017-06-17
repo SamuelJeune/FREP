@@ -5,36 +5,45 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Action : ${action.libaction}
+      PermisPiste - Action : ${action.libaction}
     </jsp:attribute>
     <jsp:body>
-        <c:if test="${not empty msg}">
-            ${msg}
-        </c:if>
-        <div class="container">
+
+        <div class="container-fluid">
+            <h1>Action : ${action.libaction}</h1>
+
+            <c:if test="${not empty msg}">
+                <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
+            </c:if>
+
             <div class="jumbotron">
-                Action : ${action.libaction}
-                <br />
+
+                <h2>Action parent :</h2>
                 <c:choose>
                     <c:when test="${not empty action.actNumaction}">
-                        Action parent : <a href="/actions/${action.actNumaction}"> ${action.actNumaction} - ${action.libaction}</a>
+                        <p><a href="/actions/${action.actNumaction}"> ${action.actNumaction} - ${action.libaction}</a></p>
                     </c:when>
                     <c:otherwise>
-                        Cette action ne possède pas d'action parent.
-                        <br />
-                        <a href="/actions/${action.numaction}/modifier">Ajouter une action parent</a>
+                        <p>Cette action ne possède pas d'action parent.</p>
+
+                        <a href="/actions/${action.numaction}/modifier">
+                            <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
+                                <span class="glyphicon glyphicon-plus"></span> Ajouter une action parent
+                            </button>
+                        </a>
                     </c:otherwise>
                 </c:choose>
-                <br />
+
+
                 <c:choose>
                     <c:when test="${objectifs.size() > 0}">
-                        Cette action est inclue dans les objectifs suivants :
-                        <table>
+                        <h2>Cette action est inclue dans les objectifs suivants : </h2>
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <td>Num. objectif</td>
-                                    <td>Libellé objectif</td>
-                                    <td>Actions</td>
+                                    <th>NUMERO</th>
+                                    <th>NOM DE L'OBJECTIF</th>
+                                    <th>ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,10 +62,15 @@
                         </table>
                     </c:when>
                     <c:otherwise>
-                        Cette action n'est inclue dans aucun objectif.
+                        <p>Cette action n'est inclue dans aucun objectif.</p>
                     </c:otherwise>
                 </c:choose>
-                <a href="/actions/${action.numaction}/ajouter-objectif">Ajouter un objectif</a>
+
+                <a href="/actions/${action.numaction}/ajouter-objectif">
+                    <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
+                        <span class="glyphicon glyphicon-plus"></span> Ajouter un objectif
+                    </button>
+                </a>
             </div>
         </div>
     </jsp:body>
