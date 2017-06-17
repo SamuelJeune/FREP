@@ -3,9 +3,11 @@ package com.permispiste.controleur;
 import com.permispiste.metier.ApprenantEntity;
 import com.permispiste.metier.InscriptionEntity;
 import com.permispiste.metier.JeuEntity;
+import com.permispiste.metier.MissionEntity;
 import com.permispiste.service.ServiceApprenant;
 import com.permispiste.service.ServiceInscription;
 import com.permispiste.service.ServiceJeu;
+import com.permispiste.service.ServiceMission;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,6 +41,14 @@ public class ApprenantControleur {
         ServiceJeu SJ = new ServiceJeu();
         List<JeuEntity> jeuxForId = inscriptionsForApprenant.stream().map(i -> SJ.getById(i.getNumjeu())).collect(Collectors.toList());
         model.addAttribute("jeux", jeuxForId);
+        ServiceMission SM = new ServiceMission();
+        List<MissionEntity> missionsForJeux = new ArrayList<>();
+        for (JeuEntity aJeuxForId : jeuxForId) {
+            List<MissionEntity> missionsForJeu = SM.getByJeu(aJeuxForId.getNumjeu());
+            missionsForJeux.addAll(missionsForJeu);
+        }
+        model.addAttribute("missions", missionsForJeux);
+
 
         return "Apprenants/afficheApprenant";
     }
