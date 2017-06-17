@@ -50,6 +50,44 @@
                     </button>
                 </a>
 
+                <h2>Actions requises :</h2>
+                <c:choose>
+                    <c:when test="${empty actions}">
+                        Cet objectif ne possède pas d'actions.
+                    </c:when>
+                    <c:otherwise>
+                        Actions associées à cet objectif :
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Num. action</td>
+                                    <td>Libellé action</td>
+                                    <td>Actions</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${actions}" var="action">
+                                    <tr>
+                                        <td>Action n°${action.numaction}</td>
+                                        <td>${action.libaction}</td>
+                                        <td>
+                                            <form method="post" action="/objectifs/${objectif.numobjectif}/retirer-action/${action.numaction}">
+                                                <button type="submit">Supprimer</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:otherwise>
+                </c:choose>
+
+                <a href="/objectifs/${objectif.numobjectif}/ajouter-action">
+                    <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
+                        <span class="glyphicon glyphicon-plus"></span> Ajouter une action
+                    </button>
+                </a>
+
             </div>
         </div>
     </jsp:body>

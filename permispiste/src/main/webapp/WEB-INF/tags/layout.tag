@@ -42,12 +42,13 @@
             </ul>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li> <a href="/" style="color:white;">Accueil</a> </li>
-                    <li> <a href="/missions" style="color:white;">Missions</a> </li>
-                    <li> <a href="/apprenants" style="color:white;">Apprenants</a></li>
-                    <li> <a href="/jeux" style="color:white;">Jeux</a> </li>
-                    <li> <a href="/objectifs" style="color:white;">Objectifs</a></li>
+                <ul class="nav navbar-nav navbar-right" style="color:white;">
+                    <li> <a href="/" >Accueil</a> </li>
+                    <li> <a href="/missions" s>Missions</a> </li>
+                    <li> <a href="/apprenants" >Apprenants</a></li>
+                    <li> <a href="/jeux" >Jeux</a> </li>
+                    <li><a href="/actions" >Actions</a></li>
+                    <li> <a href="/objectifs">Objectifs</a></li>
                 </ul>
             </div>
         </div>
@@ -65,7 +66,7 @@
         </footer>
 
 
-        <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/resources/js/jquery-3.2.1.js"></script>
         <script src="<c:url value="/resources/js/bootstrap.js" />" type="text/javascript"></script>
 
     </body>
