@@ -32,9 +32,9 @@
                             <td>${objectif.numobjectif}</td>
                             <td>${objectif.libobjectif}</td>
                             <td>
-                                <a href="${detailsURL}"><button  class="btn" type="submit" style="background-color: #18bc9c; color:whitesmoke;">Détailler</button></a>
+                                <a href="${detailsURL}"><button  class="btn" type="submit" style="background-color: #18bc9c; color:whitesmoke;">Détails</button></a>
                                 <a href="${editURL}"><button  class="btn" type="submit" style="background-color: #2c3e50; color:whitesmoke;">Modifier</button></a>
-                                <a href="${deleteURL}"><button  class="btn" type="submit" style="background-color: #e74c3c; color:whitesmoke;">Supprimer</button></a>
+                                <form method="post" action="${deleteURL}" style="display: inline"><button  class="btn" type="submit" style="background-color: #e74c3c; color: whitesmoke;">Supprimer</button></form>
                             </td>
                         </tr>
                     </c:forEach>

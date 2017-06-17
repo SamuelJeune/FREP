@@ -11,7 +11,7 @@
     <jsp:body>
 
         <div class="container-fluid">
-            <h1>Apprennant : ${apprenant.prenomapprenant} ${apprenant.nomapprenant}</h1>
+            <h1>Apprenant : ${apprenant.prenomapprenant} ${apprenant.nomapprenant}</h1>
 
             <c:if test="${not empty msg}">
                 <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
