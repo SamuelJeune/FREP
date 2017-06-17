@@ -56,6 +56,38 @@
                 </a>
 
             </div>
+
+
+            <div class="jumbotron">
+                <p>Missions en attente :</p>
+                <c:choose>
+                <c:when test="${empty missions}">
+                    Cet apprenant n'a pas de mission en attente.
+                </c:when>
+                <c:otherwise>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <td>Num. Missions</td>
+                            <td>Libellé Missions</td>
+                            <td>Actions</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${missions}" var="mission">
+                            <spring:url value="/missions/${mission.nummission}" var="missionURL" />
+                            <tr>
+                                <td><a href="${missionURL}">${mission.nummission}</a></td>
+                                <td><a href="${missionURL}">${mission.libmission}</a></td>
+                                <td><a href="#" ><button  class="btn btn-primary btn-sm" type="submit">Voir les actions de cette mission</button></a> </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </c:otherwise>
+                </c:choose>
+            </div>
+
         </div>
     </jsp:body>
 </tags:layout>
