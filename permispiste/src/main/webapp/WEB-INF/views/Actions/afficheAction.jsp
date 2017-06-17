@@ -21,7 +21,7 @@
                 <h2>Action parent :</h2>
                 <c:choose>
                     <c:when test="${not empty action.actNumaction}">
-                        <p><a href="/actions/${action.actNumaction}"> ${action.actNumaction} - ${action.libaction}</a></p>
+                        <p><a href="/actions/${action.parent.numaction}"> ${action.parent.numaction} - ${action.parent.libaction}</a></p>
                     </c:when>
                     <c:otherwise>
                         <p>Cette action ne possède pas d'action parent.</p>
@@ -34,6 +34,14 @@
                     </c:otherwise>
                 </c:choose>
 
+                <c:if test="${not empty actionsFilles}">
+                    <h2>Compléter cette action est nécessaire pour valider les actions suivantes : </h2>
+                    <ul>
+                        <c:forEach items="${actionsFilles}" var="action">
+                            <li><a href="/actions/${action.numaction}">${action.numaction} - ${action.libaction}</a></li>
+                        </c:forEach>
+                    </ul>
+                </c:if>
 
                 <c:choose>
                     <c:when test="${objectifs.size() > 0}">

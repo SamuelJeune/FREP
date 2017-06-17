@@ -1,5 +1,7 @@
 package com.permispiste.metier;
 
+import com.permispiste.service.ServiceAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -73,5 +75,11 @@ public class ActionEntity {
         result = 31 * result + (libaction != null ? libaction.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);
         return result;
+    }
+
+    @Transient
+    public ActionEntity getParent() {
+        ServiceAction SA = new ServiceAction();
+        return SA.getById(actNumaction);
     }
 }

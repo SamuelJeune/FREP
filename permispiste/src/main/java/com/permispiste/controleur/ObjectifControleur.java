@@ -44,7 +44,7 @@ public class ObjectifControleur {
         ServiceEstAssocie SEA = new ServiceEstAssocie();
         List<EstAssocieEntity> associations = SEA.getByObjectif(id);
         ServiceAction SA = new ServiceAction();
-        List<ActionEntity> actionsForObjectif = associations.stream().map(a -> SA.getById(a.getNumobjectif())).collect(Collectors.toList());
+        List<ActionEntity> actionsForObjectif = associations.stream().map(a -> SA.getById(a.getNumaction())).collect(Collectors.toList());
         model.addAttribute("actions", actionsForObjectif);
 
         return "Objectifs/afficheObjectif";

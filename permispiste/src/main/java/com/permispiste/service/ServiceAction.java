@@ -30,4 +30,11 @@ public class ServiceAction extends Services {
     public void remove(ActionEntity action) {
         super.remove(action);
     }
+
+    public List<ActionEntity> getFilles(int id) {
+        List<ActionEntity> actionsFilles;
+        String request = "SELECT action FROM ActionEntity action WHERE action.actNumaction = " + id;
+        actionsFilles = this.execute(request, ActionEntity.class);
+        return actionsFilles;
+    }
 }

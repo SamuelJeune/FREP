@@ -47,6 +47,9 @@ public class ActionControleur {
         List<ObjectifEntity> objectifsForAction = associations.stream().map(a -> SO.getById(a.getNumobjectif())).collect(Collectors.toList());
         model.addAttribute("objectifs", objectifsForAction);
 
+        List<ActionEntity> actionsFilles = SA.getFilles(id);
+        model.addAttribute("actionsFilles", actionsFilles);
+
         return "Actions/afficheAction";
     }
 
