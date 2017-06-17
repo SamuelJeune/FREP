@@ -1,16 +1,48 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Robin
-  Date: 15/06/2017
-  Time: 17:24
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 
-</body>
-</html>
+<tags:layout>
+    <jsp:attribute name="title">
+      F.R.E.P. - Objectif : ${objectif.libobjectif}
+    </jsp:attribute>
+    <jsp:body>
+        <c:if test="${not empty msg}">
+            ${msg}
+        </c:if>
+        <div class="container">
+            <div class="jumbotron">
+                Libellé : ${objectif.libobjectif}
+                <br />
+                Missions liées :
+                <c:choose>
+                    <c:when test="${empty missions}">
+                        aucune mission liée.
+                    </c:when>
+                    <c:otherwise>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Num. mission</th>
+                                    <th>Libellé mission</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${missions}" var="mission">
+                                    <tr>
+                                        <td>Mission n°${mission.nummission}</td>
+                                        <td>${mission.libmission}</td>
+                                        <td><form method="post" action="/objectifs/${objectif.numobjectif}/retirer-mission/${mission.nummission}"><button type="submit">Supprimer</button></form></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:otherwise>
+                </c:choose>
+                <a href="/objectifs/${objectif.numobjectif}/ajouter-mission">Lier à une mission</a>
+            </div>
+        </div>
+    </jsp:body>
+</tags:layout>

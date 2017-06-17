@@ -34,10 +34,10 @@
                         <a href="/jeux">Jeux</a>
                     </li>
                     <li>
-                        <a href="/missions/">Missions</a>
+                        <a href="/missions">Missions</a>
                     </li>
                     <li>
-                        <a href="/objectifs//">Objectifs</a>
+                        <a href="/objectifs">Objectifs</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -6,9 +6,10 @@ import javax.persistence.*;
 @Table(name = "objectif", schema = "permispiste", catalog = "")
 public class ObjectifEntity {
     private int numobjectif;
-    private String libobectif;
+    private String libobjectif;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NUMOBJECTIF")
     public int getNumobjectif() {
         return numobjectif;
@@ -20,12 +21,12 @@ public class ObjectifEntity {
 
     @Basic
     @Column(name = "LIBOBECTIF")
-    public String getLibobectif() {
-        return libobectif;
+    public String getLibobjectif() {
+        return libobjectif;
     }
 
-    public void setLibobectif(String libobectif) {
-        this.libobectif = libobectif;
+    public void setLibobjectif(String libobjectif) {
+        this.libobjectif = libobjectif;
     }
 
     @Override
@@ -36,7 +37,7 @@ public class ObjectifEntity {
         ObjectifEntity that = (ObjectifEntity) o;
 
         if (numobjectif != that.numobjectif) return false;
-        if (libobectif != null ? !libobectif.equals(that.libobectif) : that.libobectif != null) return false;
+        if (libobjectif != null ? !libobjectif.equals(that.libobjectif) : that.libobjectif != null) return false;
 
         return true;
     }
@@ -44,7 +45,7 @@ public class ObjectifEntity {
     @Override
     public int hashCode() {
         int result = numobjectif;
-        result = 31 * result + (libobectif != null ? libobectif.hashCode() : 0);
+        result = 31 * result + (libobjectif != null ? libobjectif.hashCode() : 0);
         return result;
     }
 }

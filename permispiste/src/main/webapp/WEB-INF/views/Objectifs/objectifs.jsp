@@ -23,12 +23,12 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${objectifs}" var="objectif">
-                        <spring:url value="/jeux/${objectif.numobjectif}" var="detailsURL" />
-                        <spring:url value="/jeux/${objectif.numobjectif}/modifier" var="editURL" />
-                        <spring:url value="/jeux/${objectif.numobjectif}/supprimer" var="deleteURL" />
+                        <spring:url value="/objectifs/${objectif.numobjectif}" var="detailsURL" />
+                        <spring:url value="/objectifs/${objectif.numobjectif}/modifier" var="editURL" />
+                        <spring:url value="/objectifs/${objectif.numobjectif}/supprimer" var="deleteURL" />
                         <tr>
                             <td>${objectif.numobjectif}</td>
-                            <td>${objectif.libobectif}</td>
+                            <td>${objectif.libobjectif}</td>
                             <td>
                                 <a href="${detailsURL}" class="btn btn-primary btn-sm" type="submit">Détails</a>
                                 <a href="${editURL}" class="btn btn-primary btn-sm" type="submit">Modifier</a>
@@ -38,7 +38,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/objectifs//ajouter">Ajouter un objectif</a>
+                <a href="/objectifs/ajouter">Ajouter un objectif</a>
             </div>
         </div>
     </jsp:body>
