@@ -72,6 +72,9 @@ public class missionControleur {
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerMission(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        ServiceFixe SF = new ServiceFixe();
+        SF.getByMission(id).forEach(i -> SF.remove(i));
+
         SM.remove(id);
 
         redirectAttributes.addFlashAttribute("css", "success");

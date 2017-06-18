@@ -3,6 +3,7 @@ package com.permispiste.controleur;
 import com.permispiste.metier.*;
 import com.permispiste.service.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -43,7 +44,7 @@ public class ObjectifControleur {
         ServiceEstAssocie SEA = new ServiceEstAssocie();
         List<EstAssocieEntity> associations = SEA.getByObjectif(id);
         ServiceAction SA = new ServiceAction();
-        List<ActionEntity> actionsForObjectif = associations.stream().map(a -> SA.getById(a.getNumobjectif())).collect(Collectors.toList());
+        List<ActionEntity> actionsForObjectif = associations.stream().map(a -> SA.getById(a.getNumaction())).collect(Collectors.toList());
         model.addAttribute("actions", actionsForObjectif);
 
         return "Objectifs/afficheObjectif";
@@ -79,6 +80,12 @@ public class ObjectifControleur {
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerObjectif(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        ServiceFixe SF = new ServiceFixe();
+        SF.getByObjectif(id).forEach(i -> SF.remove(i));
+
+        ServiceEstAssocie SEA = new ServiceEstAssocie();
+        SEA.getByObjectif(id).forEach(i -> SEA.remove(i));
+
         SO.remove(id);
 
         redirectAttributes.addFlashAttribute("css", "success");
@@ -164,7 +171,7 @@ public class ObjectifControleur {
     }
 
     @RequestMapping(value = "{idO}/retirer-action/{idA}", method = RequestMethod.POST)
-    public String retirerAction(@PathVariable("idA") int idA, @PathVariable("idO") int idO, RedirectAttributes redirectAttributes) {
+    public String retirerObjectif(@PathVariable("idA") int idA, @PathVariable("idO") int idO, RedirectAttributes redirectAttributes) {
         ServiceEstAssocie SEA = new ServiceEstAssocie();
         SEA.remove(idA, idO);
 
