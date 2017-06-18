@@ -47,7 +47,7 @@
                     <li> <a href="/apprenants" >Apprenants</a></li>
                     <li> <a href="/jeux" >Jeux</a> </li>
                     <li> <a href="/objectifs">Objectifs</a></li>
-                    <li> <a href="/missions" s>Missions</a> </li>
+                    <li> <a href="/missions" >Missions</a> </li>
                     <li><a href="/actions" >Actions</a></li>
                 </ul>
             </div>

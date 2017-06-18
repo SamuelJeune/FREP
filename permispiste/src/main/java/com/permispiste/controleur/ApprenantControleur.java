@@ -83,6 +83,8 @@ public class ApprenantControleur {
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerApprenant(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        ServiceInscription SI = new ServiceInscription();
+        SI.getByApprenant(id).forEach(i -> SI.remove(i));
         SA.remove(id);
 
         redirectAttributes.addFlashAttribute("css", "success");
