@@ -8,11 +8,13 @@
       PermisPiste - Liste des missions
     </jsp:attribute>
     <jsp:body>
-        <c:if test="${not empty msg}">
-            ${msg}
-        </c:if>
+
         <div class="container-fluid">
             <h1>Liste des missions :</h1>
+
+            <c:if test="${not empty msg}">
+                <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
+            </c:if>
 
             <div class="jumbotron">
                 <table class="table table-hover">

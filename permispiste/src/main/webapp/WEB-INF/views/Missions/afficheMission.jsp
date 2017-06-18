@@ -38,7 +38,11 @@
                                 <tr>
                                     <td><a href="/objectifs/${objectif.numobjectif}">Objectif n°${objectif.numobjectif}</a></td>
                                     <td>${objectif.libobjectif}</td>
-                                    <td><form method="post" action="/missions/${mission.nummission}/retirer-objectif/${objectif.numobjectif}"><button type="submit">Supprimer</button></form> </td>
+                                    <td>
+                                        <form method="post" action="/missions/${mission.nummission}/retirer-objectif/${objectif.numobjectif}" style="display: inline">
+                                            <button  class="btn" type="submit" style="background-color: #e74c3c; color: whitesmoke;">Supprimer</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

@@ -8,12 +8,13 @@
       PermisPiste - Liste des apprenants
     </jsp:attribute>
     <jsp:body>
-        <c:if test="${not empty msg}">
-            ${msg}
-        </c:if>
+
         <div class="container-fluid">
 
             <h1>Liste des apprenants :</h1>
+            <c:if test="${not empty msg}">
+                <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
+            </c:if>
 
             <div class="alert alert-success alert-dismissable" style="background-color: #f39c12; color:whitesmoke;">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
