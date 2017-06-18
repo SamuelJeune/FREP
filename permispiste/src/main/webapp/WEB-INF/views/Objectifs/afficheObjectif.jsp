@@ -36,7 +36,11 @@
                                     <tr>
                                         <td><a href="/missions/${mission.nummission}">Mission n°${mission.nummission}</a></td>
                                         <td>${mission.libmission}</td>
-                                        <td><form method="post" action="/objectifs/${objectif.numobjectif}/retirer-mission/${mission.nummission}"><button type="submit">Supprimer</button></form></td>
+                                        <td>
+                                            <form method="post" action="/objectifs/${objectif.numobjectif}/retirer-mission/${mission.nummission}" style="display: inline;">
+                                                <button  class="btn" type="submit" style="background-color: #e74c3c; color: whitesmoke;">Supprimer</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -70,8 +74,8 @@
                                         <td><a href="/actions/${action.numaction}">Action n°${action.numaction}</a></td>
                                         <td>${action.libaction}</td>
                                         <td>
-                                            <form method="post" action="/objectifs/${objectif.numobjectif}/retirer-action/${action.numaction}">
-                                                <button type="submit">Supprimer</button>
+                                            <form method="post" action="/objectifs/${objectif.numobjectif}/retirer-action/${action.numaction}" style="display: inline;">
+                                                <button  class="btn" type="submit" style="background-color: #e74c3c; color: whitesmoke;">Supprimer</button>
                                             </form>
                                         </td>
                                     </tr>

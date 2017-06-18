@@ -53,50 +53,86 @@
                         <span class="glyphicon glyphicon-plus"></span> Inscire à un jeu
                     </button>
                 </a>
+
+
+                <div class="container panel-group">
+                    <c:forEach items="${jeux}" var="jeu">
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapseJeu${jeu.numjeu}">
+                                        Jeu n°${jeu.numjeu} : ${jeu.libellejeu}
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: ${scoreForJeux.get(jeu)*100 / missions.get(jeu).size()}%; color : black;" aria-valuenow="${scoreForJeux.get(jeu)}" aria-valuemin="0" aria-valuemax="${missions.get(jeu).size()}">
+                                                ${scoreForJeux.get(jeu)} / ${missions.get(jeu).size()}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseJeu${jeu.numjeu}" class="panel-collapse collapse panel-group container">
+                                <c:forEach items="${missions.get(jeu)}" var="mission">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapseJeu${jeu.numjeu}Mission${mission.nummission}">
+                                                     Mission n°${mission.nummission} : ${mission.libmission}
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: ${scoreForMissions.get(mission)*100 / objectifs.get(mission).size()}%; color : black;" aria-valuenow="${scoreForMissions.get(mission)}" aria-valuemin="0" aria-valuemax="${objectifs.get(mission).size()}">
+                                                                ${scoreForMissions.get(mission)} / ${objectifs.get(mission).size()}
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </h4>
+                                        </div>
+
+                                        <div id="collapseJeu${jeu.numjeu}Mission${mission.nummission}" class="panel-collapse collapse container panel-group">
+                                            <c:forEach items="${objectifs.get(mission)}" var="objectif">
+                                                <div class="panel panel-default">
+
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" href="#collapseJeu${jeu.numjeu}Mission${mission.nummission}Objectif${objectif.numobjectif}">
+                                                                Objectif n°${objectif.numobjectif} : ${objectif.libobjectif}
+                                                                <div class="progress">
+                                                                    <div class="progress-bar" role="progressbar" style="width: ${scoreForObjectifs.get(objectif)*100 / actions.get(objectif).size()}%; color : black;" aria-valuenow="${scoreForObjectifs.get(objectif)}" aria-valuemin="0" aria-valuemax="${actions.get(objectif).size()}">
+                                                                            ${scoreForObjectifs.get(objectif)} / ${actions.get(objectif).size()}
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+
+                                                    <div id="collapseJeu${jeu.numjeu}Mission${mission.nummission}Objectif${objectif.numobjectif}" class="panel-collapse collapse">
+                                                        <c:forEach items="${actions.get(objectif)}" var="action">
+                                                            <div class="panel-body">
+                                                                Action n°${action.numaction} : ${action.libaction}
+                                                                /
+                                                                <c:choose>
+                                                                    <c:when test="${not empty obtients.get(action)}">
+                                                                        Score : ${obtients.get(action).valeur} / 20
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        Pas de score
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                                <a href="/actions/${action.numaction}/generer/${apprenant.numapprenant}"> Générer un score</a>
+                                                            </div>
+                                                        </c:forEach>
+                                                    </div>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
-
-            <ul>
-                <c:forEach items="${jeux}" var="jeu">
-                    <li>
-                        Jeu n°${jeu.numjeu} : ${jeu.libellejeu}
-                        /
-                        Missions complétées : ${scoreForJeux.get(jeu)} / ${missions.get(jeu).size()}
-                        <ul>
-                            <c:forEach items="${missions.get(jeu)}" var="mission">
-                                <li>
-                                    Mission n°${mission.nummission} : ${mission.libmission}
-                                    /
-                                    Objectifs complétées : ${scoreForMissions.get(mission)} / ${objectifs.get(mission).size()}
-                                    <ul>
-                                        <c:forEach items="${objectifs.get(mission)}" var="objectif">
-                                            Objectif n°${objectif.numobjectif} : ${objectif.libobjectif}
-                                            /
-                                            Actions complétées : ${scoreForObjectifs.get(objectif)} / ${actions.get(objectif).size()}
-                                            <ul>
-                                                <c:forEach items="${actions.get(objectif)}" var="action">
-                                                    Action n°${action.numaction} : ${action.libaction}
-                                                    /
-                                                    <c:choose>
-                                                        <c:when test="${not empty obtients.get(action)}">
-                                                            Score : ${obtients.get(action).valeur} / 20
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            Pas de score
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                    <a href="/actions/${action.numaction}/generer/${apprenant.numapprenant}"> Générer un score</a>
-                                                    <br />
-                                                </c:forEach>
-                                            </ul>
-                                        </c:forEach>
-                                    </ul>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                    </li>
-                </c:forEach>
-            </ul>
-
         </div>
     </jsp:body>
 </tags:layout>
