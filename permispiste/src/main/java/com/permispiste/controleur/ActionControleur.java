@@ -85,6 +85,9 @@ public class ActionControleur {
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerAction(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        ServiceObtient SO = new ServiceObtient();
+        SO.getByAction(id).forEach(i -> SO.remove(i));
+
         SA.remove(id);
 
         redirectAttributes.addFlashAttribute("css", "success");

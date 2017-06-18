@@ -80,6 +80,12 @@ public class ObjectifControleur {
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerObjectif(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        ServiceFixe SF = new ServiceFixe();
+        SF.getByObjectif(id).forEach(i -> SF.remove(i));
+
+        ServiceEstAssocie SEA = new ServiceEstAssocie();
+        SEA.getByObjectif(id).forEach(i -> SEA.remove(i));
+
         SO.remove(id);
 
         redirectAttributes.addFlashAttribute("css", "success");
