@@ -19,35 +19,35 @@
 
             <div class="jumbotron">
                 <h2>Inscriptions :</h2>
-                    <c:choose>
-                        <c:when test="${empty jeux}">
-                            <p>Cet apprenant n'est inscrit à aucun jeu.</p>
-                        </c:when>
-                        <c:otherwise>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>NUMERO DU JEU</th>
-                                        <th>NOM DU JEU</th>
-                                        <th>ACTIONS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${jeux}" var="jeu">
-                                        <spring:url value="/jeux/${jeu.numjeu}" var="jeuURL" />
-                                        <spring:url value="/apprenants/${apprenant.numapprenant}/desinscrire/${jeu.numjeu}" var="unsubscribeURL" />
-                                        <tr>
-                                            <td><a href="${jeuURL}">${jeu.numjeu}</a></td>
-                                            <td><a href="${jeuURL}">${jeu.libellejeu}</a></td>
-                                            <td>
-                                                <form method="POST" action="${unsubscribeURL}"><button class="btn btn-danger btn-sm" type="submit">Désinscrire</button></form>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </c:otherwise>
-                    </c:choose>
+                <c:choose>
+                    <c:when test="${empty jeux}">
+                        <p>Cet apprenant n'est inscrit à aucun jeu.</p>
+                    </c:when>
+                    <c:otherwise>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>NUMERO DU JEU</th>
+                                <th>NOM DU JEU</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${jeux}" var="jeu">
+                                <spring:url value="/jeux/${jeu.numjeu}" var="jeuURL" />
+                                <spring:url value="/apprenants/${apprenant.numapprenant}/desinscrire/${jeu.numjeu}" var="unsubscribeURL" />
+                                <tr>
+                                    <td><a href="${jeuURL}">${jeu.numjeu}</a></td>
+                                    <td><a href="${jeuURL}">${jeu.libellejeu}</a></td>
+                                    <td>
+                                        <form method="POST" action="${unsubscribeURL}"><button class="btn btn-danger btn-sm" type="submit">Désinscrire</button></form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:otherwise>
+                </c:choose>
                 <a href="/apprenants/${apprenant.numapprenant}/inscrire">
                     <button  class="btn" type="submit" style="background-color: dodgerblue; color:whitesmoke;">
                         <span class="glyphicon glyphicon-plus"></span> Inscire à un jeu
@@ -65,7 +65,7 @@
                                         Jeu n°${jeu.numjeu} : ${jeu.libellejeu}
                                         <div class="progress">
                                             <div class="progress-bar bg-success" role="progressbar" style="width: ${scoreForJeux.get(jeu)*100 / missions.get(jeu).size()}%; color : black;" aria-valuenow="${scoreForJeux.get(jeu)}" aria-valuemin="0" aria-valuemax="${missions.get(jeu).size()}">
-                                                ${scoreForJeux.get(jeu)} / ${missions.get(jeu).size()}
+                                                    ${scoreForJeux.get(jeu)} / ${missions.get(jeu).size()}
                                             </div>
                                         </div>
                                     </a>
@@ -79,7 +79,7 @@
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
                                                 <a data-toggle="collapse" href="#collapseJeu${jeu.numjeu}Mission${mission.nummission}">
-                                                     Mission n°${mission.nummission} : ${mission.libmission}
+                                                    Mission n°${mission.nummission} : ${mission.libmission}
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: ${scoreForMissions.get(mission)*100 / objectifs.get(mission).size()}%; color : black;" aria-valuenow="${scoreForMissions.get(mission)}" aria-valuemin="0" aria-valuemax="${objectifs.get(mission).size()}">
                                                                 ${scoreForMissions.get(mission)} / ${objectifs.get(mission).size()}
