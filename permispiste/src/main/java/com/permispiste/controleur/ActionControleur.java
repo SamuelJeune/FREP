@@ -3,7 +3,6 @@ package com.permispiste.controleur;
 import com.permispiste.metier.*;
 import com.permispiste.service.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -86,7 +84,7 @@ public class ActionControleur {
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerAction(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
         ServiceObtient SO = new ServiceObtient();
-        SO.getByAction(id).forEach(i -> SO.remove(i));
+        SO.getByAction(id).forEach(SO::remove);
 
         SA.remove(id);
 

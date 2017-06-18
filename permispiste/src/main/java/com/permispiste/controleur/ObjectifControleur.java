@@ -3,7 +3,6 @@ package com.permispiste.controleur;
 import com.permispiste.metier.*;
 import com.permispiste.service.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -81,10 +80,10 @@ public class ObjectifControleur {
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerObjectif(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
         ServiceFixe SF = new ServiceFixe();
-        SF.getByObjectif(id).forEach(i -> SF.remove(i));
+        SF.getByObjectif(id).forEach(SF::remove);
 
         ServiceEstAssocie SEA = new ServiceEstAssocie();
-        SEA.getByObjectif(id).forEach(i -> SEA.remove(i));
+        SEA.getByObjectif(id).forEach(SEA::remove);
 
         SO.remove(id);
 

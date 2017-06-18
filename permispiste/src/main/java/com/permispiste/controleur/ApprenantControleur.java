@@ -9,7 +9,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -159,7 +158,7 @@ public class ApprenantControleur {
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerApprenant(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
         ServiceInscription SI = new ServiceInscription();
-        SI.getByApprenant(id).forEach(i -> SI.remove(i));
+        SI.getByApprenant(id).forEach(SI::remove);
 
         SA.remove(id);
 
