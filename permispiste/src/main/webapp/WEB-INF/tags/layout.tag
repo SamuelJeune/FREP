@@ -30,10 +30,10 @@
                 </li>
                 <li>
                     <div class="container"style="margin-top:7px;">
-                    <form class="form-inline">
+                    <form method="get" action="/search" class="form-inline">
                         <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">search</span>
-                            <input type="text" class="form-control" placeholder="Nom apprenant" aria-describedby="basic-addon1">
+                            <span class="input-group-addon" id="basic-addon1">Rechercher</span>
+                            <input type="text" name="q" class="form-control" placeholder="Apprenant" aria-describedby="basic-addon1">
                         </div>
                     </form>
                     </div>
@@ -66,7 +66,7 @@
         </footer>
 
 
-        <script type="text/javascript" src="/resources/js/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
         <script src="<c:url value="/resources/js/bootstrap.js" />" type="text/javascript"></script>
 
     </body>

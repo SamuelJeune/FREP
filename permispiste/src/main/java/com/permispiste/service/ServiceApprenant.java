@@ -31,4 +31,11 @@ public class ServiceApprenant extends Services {
     public void remove(int id) {
         this.remove(this.getById(id));
     }
+
+    public List<ApprenantEntity> getByName(String recherche) {
+        List<ApprenantEntity> apprenants;
+        String request = "SELECT apprenant FROM ApprenantEntity apprenant WHERE concat(apprenant.prenomapprenant, ' ', apprenant.nomapprenant) LIKE '%" + recherche + "%' OR concat(apprenant.nomapprenant, ' ', apprenant.prenomapprenant) LIKE '%" + recherche + "%'";
+        apprenants = this.execute(request, ApprenantEntity.class);
+        return apprenants;
+    }
 }

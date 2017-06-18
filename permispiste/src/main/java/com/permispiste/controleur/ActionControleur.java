@@ -86,6 +86,9 @@ public class ActionControleur {
         ServiceObtient SO = new ServiceObtient();
         SO.getByAction(id).forEach(SO::remove);
 
+        ServiceEstAssocie SEA = new ServiceEstAssocie();
+        SEA.getByAction(id).forEach(SEA::remove);
+
         SA.remove(id);
 
         redirectAttributes.addFlashAttribute("css", "success");
