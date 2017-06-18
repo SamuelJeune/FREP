@@ -12,7 +12,7 @@
             <h1 class="text-center">Formulaire des jeux</h1>
 
             <div class="jumbotron">
-                <form:form method="post" modelAttribute="jeu" action="/jeux/creer" class="form-inline">
+                <form:form method="post" modelAttribute="jeu" action="/jeux/creer" class="form-inline" htmlEscape="true" acceptCharset="ISO-8859-1">
                     <form:hidden path="numjeu" />
 
                     <form:label path="libellejeu"> Libellé : </form:label>
