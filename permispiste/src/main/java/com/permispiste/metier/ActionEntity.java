@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "action", schema = "permispiste", catalog = "")
-public class ActionEntity {
+public class ActionEntity implements Comparable {
     private int numaction;
     private Integer actNumaction;
     private String libaction;
@@ -81,5 +81,11 @@ public class ActionEntity {
     public ActionEntity getParent() {
         ServiceAction SA = new ServiceAction();
         return SA.getById(actNumaction);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        ActionEntity that = (ActionEntity) o;
+        return this.numaction - that.numaction;
     }
 }

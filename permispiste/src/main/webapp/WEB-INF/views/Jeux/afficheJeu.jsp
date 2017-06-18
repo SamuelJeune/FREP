@@ -57,6 +57,22 @@
                         </table>
                     </c:otherwise>
                 </c:choose>
+                <h2>Actions du jeu :</h2>
+                <c:choose>
+                    <c:when test="${empty apprenants}">
+                        <p>Ce jeu ne possède pas d'actions.</p>
+                    </c:when>
+                    <c:otherwise>
+                        <ul>
+                            <c:forEach items="${actions}" var="action">
+                                <li>
+                                    Action n°${action.numaction} - ${action.libaction}
+                                    <c:if test="${not empty indicateurs.get(action)}"> / Indicateur : ${indicateurs.get(action).poids}</c:if>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </jsp:body>
