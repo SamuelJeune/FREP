@@ -20,10 +20,10 @@
                     </form:select>
 
                     <form:label path="libaction"> Libellé : </form:label>
-                    <form:input path="libaction" class="form-control"/>
+                    <form:input path="libaction" class="form-control" type="text" maxlength="20" size="20"/>
 
                     <form:label path="scoremin"> Score minimum : </form:label>
-                    <form:input path="scoremin" class="form-control"/>
+                    <form:input path="scoremin" class="form-control" type="number" step="1" value="0" min="0"/>
 
                     <button type="submit" class="btn btn-success">Enregistrer</button>
                 </form:form>

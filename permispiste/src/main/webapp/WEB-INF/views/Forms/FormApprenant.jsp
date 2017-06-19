@@ -16,10 +16,10 @@
                     <form:hidden path="numapprenant" />
 
                     <form:label path="nomapprenant"> Nom : </form:label>
-                    <form:input path="nomapprenant" class="form-control"/>
+                    <form:input path="nomapprenant" class="form-control" type="text" maxlength="20" size="20"/>
 
                     <form:label path="prenomapprenant"> Prénom : </form:label>
-                    <form:input path="prenomapprenant" class="form-control"/>
+                    <form:input path="prenomapprenant" class="form-control" type="text" maxlength="20" size="20"/>
 
                     <button type="submit" class="btn btn-success">Enregistrer</button>
                 </form:form>

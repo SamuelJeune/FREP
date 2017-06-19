@@ -16,7 +16,7 @@
                     <form:hidden path="numjeu" />
 
                     <form:label path="libellejeu"> Libellé : </form:label>
-                    <form:input path="libellejeu" class="form-control"/>
+                    <form:input path="libellejeu" class="form-control" type="text" maxlength="20" size="20"/>
 
                     <button type="submit" class="btn btn-success">Enregistrer</button>
                 </form:form>

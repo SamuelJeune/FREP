@@ -16,7 +16,7 @@
                     <form:hidden path="numobjectif" />
 
                     <form:label path="libobjectif"> Libellé : </form:label>
-                    <form:input path="libobjectif" class="form-control" />
+                    <form:input path="libobjectif" class="form-control" type="text" maxlength="20" size="20"/>
 
                     <button type="submit" class="btn btn-success">Enregistrer</button>
                 </form:form>

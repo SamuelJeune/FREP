@@ -16,7 +16,7 @@
                     <form:hidden path="nummission" />
 
                     <form:label path="libmission"> Libellé : </form:label>
-                    <form:input path="libmission" class="form-control" />
+                    <form:input path="libmission" class="form-control" type="text" maxlength="20" size="20"/>
 
                     <form:label path="numjeu"> Jeu associé : </form:label>
                     <form:select path="numjeu" items="${jeux}" itemLabel="libellejeu" itemValue="numjeu" />

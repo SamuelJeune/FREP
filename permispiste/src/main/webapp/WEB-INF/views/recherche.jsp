@@ -5,7 +5,7 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      PermisPiste
+      PermisPiste - Recherche
     </jsp:attribute>
     <jsp:body>
         <div class="container-fluid">
