@@ -26,7 +26,7 @@
                                     <li> Inscrire à un jeu depuis la liste </li>
                                     <li> Accéder à la liste des missions pour valider des actions </li>
                                 </ol>
-                                <p>Pour valider les actions d'un apprenant cliquez sur Apprenants dans la bar de navigation</p>
+                                <p>Pour suivre la formation d'un apprenant, cliquer sur Apprenants dans la bar de navigation ou rechercher le directement avec la barre de recherche.</p>
                             </div>
                         </td>
                         <td>
