@@ -29,7 +29,7 @@
                             </div>
                         </td>
                         <td>
-                            <img src="<c:url value="/resources/images/polytech.png" />">
+                            <img class="img-responsive" src="<c:url value="/resources/images/polytech.png" />">
                         </td>
                     </tr>
                 </table>
