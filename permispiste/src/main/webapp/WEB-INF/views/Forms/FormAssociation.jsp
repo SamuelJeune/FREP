@@ -6,7 +6,7 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Associer une action à un objectif
+      PermisPiste - Associer une action à un objectif
     </jsp:attribute>
     <jsp:body>
         <div class="container">

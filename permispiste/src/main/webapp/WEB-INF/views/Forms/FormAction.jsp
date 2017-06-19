@@ -5,7 +5,7 @@
 
 <tags:layout>
     <jsp:attribute name="title">
-      F.R.E.P. - Formulaire des actions
+      PermisPiste - Formulaire des actions
     </jsp:attribute>
     <jsp:body>
         <div class="container">
