@@ -16,7 +16,9 @@
                 <div class="alert" style="background-color: #f39c12; color:whitesmoke;"> ${msg} </div>
             </c:if>
 
+
             <div class="jumbotron">
+                <p>Pour accéder au résultat d'un apprenant et lui valider des actions cliquer sur détail</p>
 
                 <table class="table table-hover">
                     <thead>

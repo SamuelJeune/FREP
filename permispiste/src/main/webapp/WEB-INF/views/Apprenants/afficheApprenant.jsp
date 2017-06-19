@@ -62,7 +62,9 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" href="#collapseJeu${jeu.numjeu}">
-                                        Jeu n°${jeu.numjeu} : ${jeu.libellejeu}
+                                        Jeu n°${jeu.numjeu} : ${jeu.libellejeu}   :   Pour voir les missions à valider pour ce jeu cliquer ici
+                                        <h5>Progression :</h5>
+
                                         <div class="progress">
                                             <div class="progress-bar bg-success" role="progressbar" style="width: ${scoreForJeux.get(jeu)*100 / missions.get(jeu).size()}%; color : black;" aria-valuenow="${scoreForJeux.get(jeu)}" aria-valuemin="0" aria-valuemax="${missions.get(jeu).size()}">
                                                     ${scoreForJeux.get(jeu)} / ${missions.get(jeu).size()}
@@ -79,8 +81,11 @@
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
                                                 <a data-toggle="collapse" href="#collapseJeu${jeu.numjeu}Mission${mission.nummission}">
-                                                    Mission n°${mission.nummission} : ${mission.libmission}
+                                                    Mission n°${mission.nummission} : ${mission.libmission}   :    Pour voir les objectifs à valider pour cette mission cliquer ici
+                                                    <h5>Progression :</h5>
+
                                                     <div class="progress">
+
                                                         <div class="progress-bar" role="progressbar" style="width: ${scoreForMissions.get(mission)*100 / objectifs.get(mission).size()}%; color : black;" aria-valuenow="${scoreForMissions.get(mission)}" aria-valuemin="0" aria-valuemax="${objectifs.get(mission).size()}">
                                                                 ${scoreForMissions.get(mission)} / ${objectifs.get(mission).size()}
                                                         </div>
@@ -96,8 +101,11 @@
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
                                                             <a data-toggle="collapse" href="#collapseJeu${jeu.numjeu}Mission${mission.nummission}Objectif${objectif.numobjectif}">
-                                                                Objectif n°${objectif.numobjectif} : ${objectif.libobjectif}
+                                                                Objectif n°${objectif.numobjectif} : ${objectif.libobjectif}    :  Pour voir les actions à valider pour cet objectif cliquer ici
+                                                                <h5>Progression :</h5>
+
                                                                 <div class="progress">
+
                                                                     <div class="progress-bar" role="progressbar" style="width: ${scoreForObjectifs.get(objectif)*100 / actions.get(objectif).size()}%; color : black;" aria-valuenow="${scoreForObjectifs.get(objectif)}" aria-valuemin="0" aria-valuemax="${actions.get(objectif).size()}">
                                                                             ${scoreForObjectifs.get(objectif)} / ${actions.get(objectif).size()}
                                                                     </div>
@@ -107,6 +115,7 @@
                                                     </div>
 
                                                     <div id="collapseJeu${jeu.numjeu}Mission${mission.nummission}Objectif${objectif.numobjectif}" class="panel-collapse collapse">
+                                                        <h5>Pour valider une action, cliquer sur générer un score (Vous pouvez recommencer jusqu'à ce que le score soit supérieur à la note minimale)</h5>
                                                         <c:forEach items="${actions.get(objectif)}" var="action">
                                                             <div class="panel-body">
                                                                 Action n°${action.numaction} : ${action.libaction}
