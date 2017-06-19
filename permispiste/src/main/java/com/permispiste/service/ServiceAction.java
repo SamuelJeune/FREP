@@ -37,4 +37,8 @@ public class ServiceAction extends Services {
         actionsFilles = this.execute(request, ActionEntity.class);
         return actionsFilles;
     }
+
+    public boolean hasFilles(int id) {
+        return this.getFilles(id).isEmpty();
+    }
 }
