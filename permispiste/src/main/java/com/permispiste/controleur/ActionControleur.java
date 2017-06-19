@@ -83,17 +83,22 @@ public class ActionControleur {
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerAction(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
-        ServiceObtient SO = new ServiceObtient();
-        SO.getByAction(id).forEach(SO::remove);
+        if(!SA.hasFilles(id)) {
+            redirectAttributes.addFlashAttribute("css", "success");
+            redirectAttributes.addFlashAttribute("msg", "Impossible de supprimer l'action : d'autres actions en hérite");
+        }
+        else {
+            ServiceObtient SO = new ServiceObtient();
+            SO.getByAction(id).forEach(SO::remove);
 
-        ServiceEstAssocie SEA = new ServiceEstAssocie();
-        SEA.getByAction(id).forEach(SEA::remove);
+            ServiceEstAssocie SEA = new ServiceEstAssocie();
+            SEA.getByAction(id).forEach(SEA::remove);
 
-        SA.remove(id);
+            SA.remove(id);
 
-        redirectAttributes.addFlashAttribute("css", "success");
-        redirectAttributes.addFlashAttribute("msg", "Action supprimée avec succès.");
-
+            redirectAttributes.addFlashAttribute("css", "success");
+            redirectAttributes.addFlashAttribute("msg", "Action supprimée avec succès.");
+        }
         return "redirect:/actions";
     }
 
