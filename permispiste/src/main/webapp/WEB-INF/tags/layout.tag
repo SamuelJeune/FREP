@@ -41,7 +41,7 @@
                 </li>
             </ul>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 <ul class="nav navbar-nav navbar-right" style="color:white;">
                     <li> <a href="/" >Accueil</a> </li>
                     <li> <a href="/apprenants" >Apprenants</a></li>
