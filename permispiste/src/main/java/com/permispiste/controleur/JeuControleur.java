@@ -61,6 +61,15 @@ public class JeuControleur {
 
     @RequestMapping(value = "{id}/supprimer", method = RequestMethod.POST)
     public String supprimerJeu(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        ServiceInscription SI = new ServiceInscription();
+        SI.getByJeu(id).forEach(SI::remove);
+
+        ServiceMission SM = new ServiceMission();
+        ServiceFixe SF = new ServiceFixe();
+        List<MissionEntity> missions = SM.getByJeu(id);
+        missions.forEach(m ->SF.getByMission(m.getNummission()).forEach(SF::remove));
+        missions.forEach(SM::remove);
+
         SJ.remove(id);
 
         redirectAttributes.addFlashAttribute("css", "success");
